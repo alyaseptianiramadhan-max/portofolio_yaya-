@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Retro | Alya Septiani Ramadhan</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+        .retro-title {
+            font-family: 'Press Start 2P', monospace;
+        }
+
+        /* --- THEME CONFIGURATION --- */
+        /* Dark Mode (Default) */
+        body.dark-mode {
+            background-color: #0f051d;
+            color: #f3e8ff;
+        }
+        body.dark-mode .retro-grid {
+            background-image: linear-gradient(to right, rgba(255, 0, 128, 0.1) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 0, 128, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        body.dark-mode .glass-retro {
+            background: rgba(30, 10, 50, 0.7);
+            border: 2px solid rgba(255, 0, 128, 0.3);
+            box-shadow: 0 0 20px rgba(255, 0, 128, 0.2);
+        }
+        body.dark-mode .nav-bg {
+            background-color: rgba(18, 4, 40, 0.9);
+            border-bottom: 2px solid rgba(236, 72, 153, 0.4);
+        }
+        body.dark-mode .text-main { color: #ffffff; }
+        body.dark-mode .text-desc { color: #e9d5ff; }
+        body.dark-mode .card-bg-sub { background-color: rgba(88, 28, 135, 0.4); }
+        body.dark-mode .form-input {
+            background-color: rgba(38, 5, 54, 0.8);
+            border: 1px solid rgba(236, 72, 153, 0.5);
+            color: #ffffff;
+        }
+
+        /* Light Mode */
+        body.light-mode {
+            background-color: #f8fafc;
+            color: #1e1b4b;
+        }
+        body.light-mode .retro-grid {
+            background-image: linear-gradient(to right, rgba(219, 39, 119, 0.08) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(219, 39, 119, 0.08) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        body.light-mode .glass-retro {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 2px solid rgba(219, 39, 119, 0.25);
+            box-shadow: 0 10px 25px rgba(219, 39, 119, 0.1);
+        }
+        body.light-mode .glass-retro:hover {
+            border-color: #db2777;
+            box-shadow: 0 10px 30px rgba(219, 39, 119, 0.2);
+        }
+        body.light-mode .nav-bg {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-bottom: 2px solid rgba(219, 39, 119, 0.3);
+        }
+        body.light-mode .text-main { color: #0f172a; }
+        body.light-mode .text-desc { color: #475569; }
+        body.light-mode .card-bg-sub { background-color: rgba(243, 232, 255, 0.7); }
+        body.light-mode .form-input {
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(219, 39, 119, 0.3);
+            color: #0f172a;
+        }
+
+        /* --- STAGE REVEAL ANIMATIONS --- */
+        .stage-reveal {
+            opacity: 0;
+            transition: all 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        #home.stage-reveal { transform: scale(0.85); filter: blur(4px); }
+        #home.stage-reveal.active { opacity: 1; transform: scale(1); filter: blur(0); }
+
+        #about.stage-reveal { transform: translateX(-100px); }
+        #about.stage-reveal.active { opacity: 1; transform: translateX(0); }
+
+        #education .edu-item {
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        #education.active .edu-item:nth-child(1) { opacity: 1; transform: translateY(0) scale(1); transition-delay: 0.1s; }
+        #education.active .edu-item:nth-child(2) { opacity: 1; transform: translateY(0) scale(1); transition-delay: 0.3s; }
+        #education.active .edu-item:nth-child(3) { opacity: 1; transform: translateY(0) scale(1); transition-delay: 0.5s; }
+        #education.stage-reveal.active { opacity: 1; }
+
+        #skills.stage-reveal { transform: rotateX(25deg) translateY(50px); }
+        #skills.stage-reveal.active { opacity: 1; transform: rotateX(0deg) translateY(0); }
+        .skill-bar-inner { width: 0% !important; transition: width 1.5s cubic-bezier(0.1, 0.8, 0.3, 1); }
+        #skills.active .skill-bar-inner { width: var(--target-width) !important; }
+
+        #projects .project-card {
+            opacity: 0;
+            transform: translateY(60px) rotate(-3deg);
+            transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        #projects.active .project-card:nth-child(1) { opacity: 1; transform: translateY(0) rotate(0); transition-delay: 0.1s; }
+        #projects.active .project-card:nth-child(2) { opacity: 1; transform: translateY(0) rotate(0); transition-delay: 0.3s; }
+        #projects.active .project-card:nth-child(3) { opacity: 1; transform: translateY(0) rotate(0); transition-delay: 0.5s; }
+        #projects.stage-reveal.active { opacity: 1; }
+
+        #contact.stage-reveal { transform: scale(0.8) translateY(60px); }
+        #contact.stage-reveal.active { opacity: 1; transform: scale(1) translateY(0); }
+
+        .stage-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            font-size: 10px;
+            font-family: 'Press Start 2P', monospace;
+            border-radius: 4px;
+            background: rgba(255, 0, 128, 0.15);
+            border: 1px solid #ff0080;
+            color: #db2777;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body class="relative overflow-x-hidden retro-grid dark-mode">
+
+    <!-- Navigation Bar -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 nav-bg backdrop-blur-md transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="retro-title text-base sm:text-lg text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-yellow-500 to-cyan-500 tracking-wider">
+                WELCOME TO
+            </a>
+            
+            <!-- Desktop Menu & Theme Toggle -->
+            <div class="hidden md:flex items-center space-x-8 font-semibold text-sm">
+                <div class="flex space-x-6 text-desc">
+                    <a href="#home" class="hover:text-pink-500 transition-colors">01.BERANDA</a>
+                    <a href="#about" class="hover:text-pink-500 transition-colors">02.TENTANG</a>
+                    <a href="#education" class="hover:text-pink-500 transition-colors">03.PENDIDIKAN</a>
+                    <a href="#skills" class="hover:text-pink-500 transition-colors">04.KEAHLIAN</a>
+                    <a href="#projects" class="hover:text-pink-500 transition-colors">05.PROYEK</a>
+                    <a href="#contact" class="hover:text-pink-500 transition-colors">06.KONTAK</a>
+                </div>
+                <!-- Theme Toggle Button Desktop -->
+                <button id="themeToggle" class="w-10 h-10 rounded-full glass-retro flex items-center justify-center text-pink-500 hover:scale-110 transition-transform focus:outline-none shadow-md" title="Ubah Mode Tampilan">
+                    <i id="themeIcon" class="fa-solid fa-moon text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Controls (Toggle Menu & Theme) -->
+            <div class="flex items-center space-x-4 md:hidden">
+                <button id="themeToggleMobile" class="w-9 h-9 rounded-full glass-retro flex items-center justify-center text-pink-500 focus:outline-none">
+                    <i id="themeIconMobile" class="fa-solid fa-moon text-base"></i>
+                </button>
+                <button id="menuBtn" class="text-pink-500 text-2xl focus:outline-none">
+                    <i class="fa-solid fa-gamepad"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden nav-bg border-t border-pink-500/30 px-6 py-4 space-y-3 font-semibold text-sm">
+            <a href="#home" class="block text-desc hover:text-pink-500 mobile-link">Beranda</a>
+            <a href="#about" class="block text-desc hover:text-pink-500 mobile-link">Tentang</a>
+            <a href="#education" class="block text-desc hover:text-pink-500 mobile-link">Pendidikan</a>
+            <a href="#skills" class="block text-desc hover:text-pink-500 mobile-link">Keahlian</a>
+            <a href="#projects" class="block text-desc hover:text-pink-500 mobile-link">Proyek</a>
+            <a href="#contact" class="block text-desc hover:text-pink-500 mobile-link">Kontak</a>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <div class="relative z-10">
+
+        <!-- 1. Hero Section -->
+        <section id="home" class="min-h-screen flex items-center justify-center pt-24 pb-12 px-6 stage-reveal">
+            <div class="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="text-left space-y-6">
+                    <span class="stage-badge">STAGE 01: HERO ZONE</span>
+                    <div class="block px-4 py-2 w-fit rounded bg-gradient-to-r from-pink-600 to-purple-600 text-yellow-300 text-xs retro-title border border-yellow-300/50 shadow-[0_0_10px_rgba(234,179,8,0.5)]">
+                        PRESS START TO PLAY ▶
+                    </div>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold text-main leading-tight">
+                        HALO, SAYA <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-yellow-500 to-cyan-500">
+                            ALYA SEPTIANI RAMADHAN
+                        </span>
+                    </h1>
+                    <h2 class="text-lg sm:text-xl text-yellow-500 font-semibold">
+                        &lt; Pelajar Programmer &amp; Creative Designer /&gt;
+                    </h2>
+                    <p class="text-desc text-base max-w-lg leading-relaxed">
+                        Mengembangkan solusi digital yang modern, responsif, dan estetis dengan fokus pada pengalaman pengguna yang intuitif dan penuh estetika tinggi dan Membangun dunia digital bergaya yang penuh warna , dan resfonsif,interaktif, dan penuh estetika tinggi. 
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <a href="#projects" class="px-7 py-3.5 rounded-lg bg-gradient-to-r from-pink-600 to-yellow-500 text-slate-950 font-bold shadow-[0_0_15px_rgba(236,72,153,0.6)] hover:scale-105 transition-all duration-300">
+                            LIHAT KARYA 🚀
+                        </a>
+                        <a href="#contact" class="px-7 py-3.5 rounded-lg glass-retro text-pink-500 font-semibold hover:bg-pink-500/20 transition-all duration-300">
+                            HUBUNGI SAYA
+                        </a>
+                    </div>
+                </div>
+
+                <div class="flex justify-center items-center">
+                    <div class="relative w-64 h-64 sm:w-80 sm:h-80">
+                        <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-pink-500 via-purple-600 to-cyan-400 opacity-75 blur-2xl animate-pulse"></div>
+                        <div class="relative w-full h-full rounded-2xl border-4 border-yellow-400 overflow-hidden glass-retro flex items-center justify-center transform rotate-3 hover:rotate-0 transition-transform duration-500 shadow-[0_0_30px_rgba(250,204,21,0.4)]">
+                            <img src="foto latar merah.jpeg" alt="Profile" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. About Section -->
+        <section id="about" class="py-20 px-6 stage-reveal">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-12">
+                    <span class="stage-badge">STAGE 02: PLAYER STATS</span>
+                    <h2 class="retro-title text-2xl sm:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-yellow-500 mb-3">TENTANG SAYA</h2>
+                    <div class="w-24 h-1.5 bg-gradient-to-r from-pink-500 to-yellow-500 mx-auto rounded-full"></div>
+                </div>
+
+                <div class="glass-retro p-8 sm:p-10 rounded-2xl text-desc leading-relaxed shadow-2xl border-l-4 border-l-yellow-400">
+                    <p class="text-lg mb-6 text-main font-medium">
+                        Saya adalah pelajar yang memiiki minat di bidang Web Development dan UI/UX Design. Saya menciptakan website yang menarik,mengembangkan ide kreatif, serta menggabungkan tegnologi dengan desain visual untuk menghasilkan pengalaman digital yang unik dan fungsional.
+                    </p>    
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 text-center">
+                        <div class="p-4 rounded-xl card-bg-sub border border-pink-500/30 transform hover:-translate-y-2 transition-transform duration-300">
+                            <h3 class="text-3xl font-extrabold text-yellow-500">3+</h3>
+                            <p class="text-xs text-desc mt-1 uppercase tracking-wider font-semibold">Tahun Pengalaman</p>
+                        </div>
+                        <div class="p-4 rounded-xl card-bg-sub border border-pink-500/30 transform hover:-translate-y-2 transition-transform duration-300">
+                            <h3 class="text-3xl font-extrabold text-yellow-500">8+</h3>
+                            <p class="text-xs text-desc mt-1 uppercase tracking-wider font-semibold">Proyek Selesai</p>
+                        </div>
+                        <div class="p-4 rounded-xl card-bg-sub border border-pink-500/30 transform hover:-translate-y-2 transition-transform duration-300">
+                            <h3 class="text-3xl font-extrabold text-yellow-500">100%</h3>
+                            <p class="text-xs text-desc mt-1 uppercase tracking-wider font-semibold">Semangat Juang</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Education Section -->
+        <section id="education" class="py-20 px-6 stage-reveal">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-12">
+                    <span class="stage-badge">STAGE 03: QUEST LOG</span>
+                    <h2 class="retro-title text-2xl sm:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-yellow-500 mb-3">RIWAYAT PENDIDIKAN</h2>
+                    <div class="w-24 h-1.5 bg-gradient-to-r from-pink-500 to-yellow-500 mx-auto rounded-full"></div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="edu-item glass-retro p-6 sm:p-8 rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-r-4 border-r-pink-500">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-pink-600/20 text-pink-500 rounded-xl border border-pink-500 text-2xl">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-main">SMK / Rekayasa Perangkat Lunak</h3>
+                                <p class="text-pink-500 font-semibold text-sm">SMKN MANONJAYA</p>
+                                <p class="text-desc text-sm mt-2">Mempelajari pemrograman web, basis data, algoritma, serta mendalami dunia coding secara profesional.</p>
+                            </div>
+                        </div>
+                        <span class="px-4 py-1.5 rounded-full bg-gradient-to-r from-pink-600 to-purple-600 text-yellow-200 text-xs font-bold border border-yellow-300/40 whitespace-nowrap">
+                            2024 - Sekarang
+                        </span>
+                    </div>
+
+                    <div class="edu-item glass-retro p-6 sm:p-8 rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-r-4 border-r-purple-500">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-pink-600/20 text-pink-500 rounded-xl border border-pink-500 text-2xl">
+                                <i class="fa-solid fa-school"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-main">Sekolah Menengah Pertama</h3>
+                                <p class="text-pink-500 font-semibold text-sm">SMPN 1 MANONJAYA</p>
+                                <p class="text-desc text-sm mt-2">Aktif dalam kegiatan sekolah dan mulai menumbuhkan ketertarikan besar pada teknologi komputer.</p>
+                            </div>
+                        </div>
+                        <span class="px-4 py-1.5 rounded-full card-bg-sub text-desc text-xs font-semibold border border-purple-500/40 whitespace-nowrap">
+                            2021 - 2024
+                        </span>
+                    </div>
+
+                    <div class="edu-item glass-retro p-6 sm:p-8 rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-r-4 border-r-cyan-500">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-pink-600/20 text-pink-500 rounded-xl border border-pink-500 text-2xl">
+                                <i class="fa-solid fa-book-open"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-main">Sekolah Dasar</h3>
+                                <p class="text-pink-500 font-semibold text-sm">SDN 2 MANONJAYA</p>
+                                <p class="text-desc text-sm mt-2">Menyelesaikan pendidikan dasar dengan fondasi disiplin dan semangat belajar yang kuat.</p>
+                            </div>
+                        </div>
+                        <span class="px-4 py-1.5 rounded-full card-bg-sub text-desc text-xs font-semibold border border-purple-500/40 whitespace-nowrap">
+                            2015 - 2021
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Skills Section -->
+        <section id="skills" class="py-20 px-6 stage-reveal">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <span class="stage-badge">STAGE 04: SKILL TREE</span>
+                    <h2 class="retro-title text-2xl sm:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-yellow-500 mb-3">KEAHLIAN UTAMA</h2>
+                    <div class="w-24 h-1.5 bg-gradient-to-r from-pink-500 to-yellow-500 mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="glass-retro p-8 rounded-2xl space-y-6">
+                        <h3 class="text-xl font-bold text-yellow-500 mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-code"></i> Pengembangan Web
+                        </h3>
+                        
+                        <div>
+                            <div class="flex justify-between text-sm text-desc mb-2 font-semibold">
+                                <span>HTML & CSS / Tailwind</span>
+                                <span class="text-yellow-500 font-bold">90%</span>
+                            </div>
+                            <div class="w-full h-3 card-bg-sub rounded-full overflow-hidden border border-pink-500/40">
+                                <div class="skill-bar-inner h-full bg-gradient-to-r from-pink-500 via-purple-500 to-yellow-500 rounded-full" style="--target-width: 90%;"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm text-desc mb-2 font-semibold">
+                                <span>JavaScript / React</span>
+                                <span class="text-yellow-500 font-bold">80%</span>
+                            </div>
+                            <div class="w-full h-3 card-bg-sub rounded-full overflow-hidden border border-pink-500/40">
+                                <div class="skill-bar-inner h-full bg-gradient-to-r from-pink-500 via-purple-500 to-yellow-500 rounded-full" style="--target-width: 80%;"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm text-desc mb-2 font-semibold">
+                                <span>Node.js / Express</span>
+                                <span class="text-yellow-500 font-bold">70%</span>
+                            </div>
+                            <div class="w-full h-3 card-bg-sub rounded-full overflow-hidden border border-pink-500/40">
+                                <div class="skill-bar-inner h-full bg-gradient-to-r from-pink-500 via-purple-500 to-yellow-500 rounded-full" style="--target-width: 70%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-retro p-8 rounded-2xl">
+                        <h3 class="text-xl font-bold text-yellow-500 mb-6 flex items-center gap-2">
+                            <i class="fa-solid fa-toolbox"></i> Desain &amp; Tools
+                        </h3>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                            <div class="p-4 rounded-xl card-bg-sub border border-pink-500/30 text-center hover:bg-pink-600/20 hover:scale-105 transition-all">
+                                <i class="fa-brands fa-figma text-3xl text-pink-500 mb-2"></i>
+                                <p class="text-sm text-desc font-semibold">Figma</p>
+                            </div>
+                            <div class="p-4 rounded-xl card-bg-sub border border-pink-500/30 text-center hover:bg-pink-600/20 hover:scale-105 transition-all">
+                                <i class="fa-brands fa-git-alt text-3xl text-yellow-500 mb-2"></i>
+                                <p class="text-sm text-desc font-semibold">Git</p>
+                            </div>
+                            <div class="p-4 rounded-xl card-bg-sub border border-pink-500/30 text-center hover:bg-pink-600/20 hover:scale-105 transition-all">
+                                <i class="fa-brands fa-github text-3xl text-cyan-500 mb-2"></i>
+                                <p class="text-sm text-desc font-semibold">GitHub</p>
+                            </div>
+                            <div class="p-4 rounded-xl card-bg-sub border border-pink-500/30 text-center hover:bg-pink-600/20 hover:scale-105 transition-all">
+                                <i class="fa-solid fa-database text-3xl text-pink-500 mb-2"></i>
+                                <p class="text-sm text-desc font-semibold">SQL &amp; Mongo</p>
+                            </div>
+                            <div class="p-4 rounded-xl card-bg-sub border border-pink-500/30 text-center hover:bg-pink-600/20 hover:scale-105 transition-all">
+                                <i class="fa-brands fa-npm text-3xl text-yellow-500 mb-2"></i>
+                                <p class="text-sm text-desc font-semibold">NPM</p>
+                            </div>
+                            <div class="p-4 rounded-xl card-bg-sub border border-pink-500/30 text-center hover:bg-pink-600/20 hover:scale-105 transition-all">
+                                <i class="fa-solid fa-code text-3xl text-cyan-500 mb-2"></i>
+                                <p class="text-sm text-desc font-semibold">VS Code</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Projects Section -->
+        <section id="projects" class="py-20 px-6 stage-reveal">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-12">
+                    <span class="stage-badge">STAGE 05: LOOT GALLERY</span>
+                    <h2 class="retro-title text-2xl sm:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-yellow-500 mb-3">PORTOFOLIO PROYEK</h2>
+                    <p class="text-desc">Kumpulan karya digital terbaik yang pernah saya buat</p>
+                    <div class="w-24 h-1.5 bg-gradient-to-r from-pink-500 to-yellow-500 mx-auto mt-3 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="project-card glass-retro rounded-2xl overflow-hidden hover:scale-105 hover:-translate-y-2 transition-all duration-300 shadow-xl">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="fletroom.jfif" alt="Project 1" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-yellow-500 uppercase tracking-wider">Web Application</span>
+                            <h3 class="text-xl font-bold text-main mt-1 mb-2">E-Commerce Platform</h3>
+                            <p class="text-desc text-sm mb-4">Aplikasi toko online modern berbasis React dan Tailwind CSS dengan fitur keranjang belanja interaktif.</p>
+                            <div class="flex justify-between items-center pt-2 border-t border-pink-500/30">
+                                <span class="text-xs text-pink-500 font-semibold">React, Tailwind</span>
+                                <a href="#" class="text-yellow-500 font-bold hover:underline text-sm flex items-center gap-1">
+                                    Detail <i class="fa-solid fa-arrow-right text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card glass-retro rounded-2xl overflow-hidden hover:scale-105 hover:-translate-y-2 transition-all duration-300 shadow-xl">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="dashboard laundry.avif" alt="Project 2" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-yellow-500 uppercase tracking-wider">UI/UX Design</span>
+                            <h3 class="text-xl font-bold text-main mt-1 mb-2">Dashboard Analytics Laundry</h3>
+                            <p class="text-desc text-sm mb-4">Desain antarmuka dashboard analitik data keuangan dengan tema retro-dark mode yang elegan.</p>
+                            <div class="flex justify-between items-center pt-2 border-t border-pink-500/30">
+                                <span class="text-xs text-pink-500 font-semibold">Figma, Prototype</span>
+                                <a href="#" class="text-yellow-500 font-bold hover:underline text-sm flex items-center gap-1">
+                                    Detail <i class="fa-solid fa-arrow-right text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card glass-retro rounded-2xl overflow-hidden hover:scale-105 hover:-translate-y-2 transition-all duration-300 shadow-xl">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="company profile accessmedia.jfif" alt="Project 3" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-yellow-500 uppercase tracking-wider">Web Application</span>
+                            <h3 class="text-xl font-bold text-main mt-1 mb-2">Company Profile</h3>
+                            <p class="text-desc text-sm mb-4">Website profil perusahaan Access media interaktif dengan animasi smooth scrolling dan desain futuristik.</p>
+                            <div class="flex justify-between items-center pt-2 border-t border-pink-500/30">
+                                <span class="text-xs text-pink-500 font-semibold">HTML, Tailwind, JS</span>
+                                <a href="#" class="text-yellow-500 font-bold hover:underline text-sm flex items-center gap-1">
+                                    Detail <i class="fa-solid fa-arrow-right text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Contact Section -->
+        <section id="contact" class="py-20 px-6 stage-reveal">
+            <div class="max-w-4xl mx-auto">
+                <div class="glass-retro p-8 sm:p-12 rounded-3xl shadow-2xl border-2 border-pink-500/50">
+                    <div class="text-center mb-10">
+                        <span class="stage-badge">FINAL STAGE: TRANSMIT SIGNAL</span>
+                        <h2 class="retro-title text-2xl sm:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-yellow-500 mb-2">HUBUNGI SAYA</h2>
+                        <p class="text-desc">Tertarik untuk berkolaborasi? Kirimkan pesan Anda melalui form di bawah.</p>
+                        <div class="w-16 h-1 bg-yellow-500 mx-auto mt-3 rounded-full"></div>
+                    </div>
+
+                    <form id="contactForm" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-pink-500 mb-2">Nama Lengkap</label>
+                                <input type="text" required placeholder="Masukkan nama anda" class="form-input w-full px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-pink-500 mb-2">Alamat Email</label>
+                                <input type="email" required placeholder="nama@email.com" class="form-input w-full px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-pink-500 mb-2">Pesan / Subjek</label>
+                            <textarea rows="4" required placeholder="Tulis pesan anda di sini..." class="form-input w-full px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-pink-600 via-purple-600 to-yellow-500 text-slate-950 font-extrabold text-lg shadow-[0_0_20px_rgba(236,72,153,0.5)] hover:scale-[1.02] active:scale-95 transition-all duration-300">
+                            KIRIM PESAN SEKARANG ⚡
+                        </button>
+                    </form>
+
+                    <div class="flex justify-center space-x-6 mt-10 pt-6 border-t border-pink-500/30">
+                        <a href="#" class="w-12 h-12 rounded-full card-bg-sub border border-pink-500/50 flex items-center justify-center text-pink-500 hover:bg-yellow-500 hover:text-slate-950 transition-all transform hover:scale-110">
+                            <i class="fa-brands fa-github text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full card-bg-sub border border-pink-500/50 flex items-center justify-center text-pink-500 hover:bg-yellow-500 hover:text-slate-950 transition-all transform hover:scale-110">
+                            <i class="fa-brands fa-linkedin-in text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full card-bg-sub border border-pink-500/50 flex items-center justify-center text-pink-500 hover:bg-yellow-500 hover:text-slate-950 transition-all transform hover:scale-110">
+                            <i class="fa-brands fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-8 text-center text-desc text-sm border-t border-pink-500/20 nav-bg">
+            <p>© 2026 Alya Septiani Ramadhan. Crafted with Retro Vibe &amp; Tailwind CSS.</p>
+        </footer>
+
+    </div>
+
+    <!-- JavaScript Interactions & Dark/Light Mode Switcher -->
+    <script>
+        // Toggle Mobile Navigation
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Dark / Light Mode Switcher Logic
+        const body = document.body;
+        const themeToggle = document.getElementById('themeToggle');
+        const themeToggleMobile = document.getElementById('themeToggleMobile');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeIconMobile = document.getElementById('themeIconMobile');
+
+        function switchTheme() {
+            if (body.classList.contains('dark-mode')) {
+                body.classList.replace('dark-mode', 'light-mode');
+                themeIcon.className = 'fa-solid fa-sun text-lg';
+                themeIconMobile.className = 'fa-solid fa-sun text-base';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.classList.replace('light-mode', 'dark-mode');
+                themeIcon.className = 'fa-solid fa-moon text-lg';
+                themeIconMobile.className = 'fa-solid fa-moon text-base';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        themeToggle.addEventListener('click', switchTheme);
+        themeToggleMobile.addEventListener('click', switchTheme);
+
+        // Check Saved Theme Preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            body.classList.replace('dark-mode', 'light-mode');
+            themeIcon.className = 'fa-solid fa-sun text-lg';
+            themeIconMobile.className = 'fa-solid fa-sun text-base';
+        }
+
+        // Intersection Observer for Stage Animations
+        const observerOptions = {
+            root: null,
+            threshold: 0.2
+        };
+
+        const stageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stage-reveal').forEach(stage => {
+            stageObserver.observe(stage);
+        });
+    </script>
+</body>
+</html>

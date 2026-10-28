@@ -1,0 +1,51 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    /* Gradasi Biru Tua ke Putih Terang */
+    background: linear-gradient(180deg, #0a192f 0%, #1e3a8a 35%, #3b82f6 70%, #f8fafc 100%);
+    color: #1e293b;
+    min-height: 100vh;
+}
+
+/* Glassmorphism Dark (Atas) */
+.glass-dark {
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Glassmorphism Light (Bawah) */
+.glass-light {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #0a192f;
+}
+::-webkit-scrollbar-thumb {
+    background: #3b82f6;
+    border-radius: 4px;
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
+
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Glow Effect */
+.glow-effect {
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.5);
+}
