@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio Retro | Alya Septiani Ramadhan</title>
+    <title>Scrapbook Portfolio | Alya Septiani Ramadhan</title>
     
+    <!-- FAVICON (GANTI IKON TAB BROWSER JADI FOTO KAMU) -->
+    <link rel="icon" type="image/jpeg" href="foto latar merah.jpeg">
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -12,673 +15,792 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         body {
-            font-family: 'Space Grotesk', sans-serif;
-            transition: background-color 0.4s ease, color 0.4s ease;
-        }
-        .retro-title {
-            font-family: 'Press Start 2P', monospace;
-        }
-
-        /* --- THEME CONFIGURATION (RETRO UNIK NEON & SPIDER ACCENT) --- */
-        /* Dark Mode (Default) */
-        body.dark-mode {
-            background-color: #0f051d;
-            color: #f3e8ff;
-        }
-        body.dark-mode .retro-grid {
-            background-image: linear-gradient(to right, rgba(255, 0, 128, 0.12) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(255, 0, 128, 0.12) 1px, transparent 1px);
-            background-size: 40px 40px;
-        }
-        body.dark-mode .glass-retro {
-            background: rgba(30, 10, 50, 0.75);
-            border: 2px solid rgba(255, 0, 128, 0.4);
-            box-shadow: 0 0 25px rgba(255, 0, 128, 0.25);
-        }
-        body.dark-mode .nav-bg {
-            background-color: rgba(18, 4, 40, 0.92);
-            border-bottom: 2px solid rgba(236, 72, 153, 0.4);
-        }
-        body.dark-mode .text-main { color: #ffffff; }
-        body.dark-mode .text-desc { color: #e9d5ff; }
-        body.dark-mode .card-bg-sub { background-color: rgba(88, 28, 135, 0.4); }
-        body.dark-mode .form-input {
-            background-color: rgba(38, 5, 54, 0.85);
-            border: 1px solid rgba(236, 72, 153, 0.5);
-            color: #ffffff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f5ebe0;
+            color: #2c1e16;
+            min-height: 100vh;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            cursor: default;
         }
 
-        /* Light Mode */
-        body.light-mode {
-            background-color: #f8fafc;
-            color: #1e1b4b;
-        }
-        body.light-mode .retro-grid {
-            background-image: linear-gradient(to right, rgba(219, 39, 119, 0.08) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(219, 39, 119, 0.08) 1px, transparent 1px);
-            background-size: 40px 40px;
-        }
-        body.light-mode .glass-retro {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            border: 2px solid rgba(219, 39, 119, 0.25);
-            box-shadow: 0 10px 25px rgba(219, 39, 119, 0.1);
-        }
-        body.light-mode .nav-bg {
-            background-color: rgba(255, 255, 255, 0.9);
-            border-bottom: 2px solid rgba(219, 39, 119, 0.3);
-        }
-        body.light-mode .text-main { color: #0f172a; }
-        body.light-mode .text-desc { color: #475569; }
-        body.light-mode .card-bg-sub { background-color: rgba(243, 232, 255, 0.7); }
-        body.light-mode .form-input {
-            background-color: rgba(255, 255, 255, 0.9);
-            border: 1px solid rgba(219, 39, 119, 0.3);
-            color: #0f172a;
+        /* Variasi 1: Polkadot Warna Biskuit (Slide Ganjil: 1, 3, 5, 7) */
+        .bg-polka-biscuit {
+            background-color: #f5ebe0;
+            background-image: 
+                radial-gradient(#d7ccc8 2.2px, transparent 2.2px),
+                radial-gradient(#b08968 2.2px, #f5ebe0 2.2px);
+            background-size: 36px 36px;
+            background-position: 0 0, 18px 18px;
         }
 
-        .stage-badge {
-            display: inline-block;
-            padding: 4px 12px;
-            font-size: 10px;
-            font-family: 'Press Start 2P', monospace;
-            border-radius: 4px;
-            background: rgba(255, 0, 128, 0.15);
-            border: 1px solid #ff0080;
-            color: #f472b6;
-            margin-bottom: 12px;
-            text-transform: uppercase;
+        /* Variasi 2: Polkadot Warna Espresso (Slide Genap: 2, 4, 6) */
+        .bg-polka-espresso {
+            background-color: #2b170c;
+            background-image: 
+                radial-gradient(#d7ccc8 2.2px, transparent 2.2px),
+                radial-gradient(#8d6e63 2.2px, #2b170c 2.2px);
+            background-size: 36px 36px;
+            background-position: 0 0, 18px 18px;
         }
 
-        /* --- ANIMASI LABA-LABA BERJATUHAN --- */
-        .falling-spider {
+        /* Efek Renda Putih di Pinggir Layar */
+        .lace-border-left {
             position: fixed;
-            top: -60px;
-            z-index: 45;
-            color: #ff0080;
-            cursor: pointer;
-            pointer-events: auto;
-            text-shadow: 0 0 10px rgba(255, 0, 128, 0.8);
-            user-select: none;
-            animation: spiderFall linear infinite;
+            top: 0; left: 0; bottom: 0;
+            width: 32px;
+            background-image: radial-gradient(circle at 32px 16px, transparent 10px, #fffdf9 11px, #fffdf9 16px, transparent 17px);
+            background-size: 32px 32px;
+            z-index: 40;
+            pointer-events: none;
+            opacity: 0.9;
+            filter: drop-shadow(2px 0 4px rgba(0,0,0,0.3));
         }
 
-        @keyframes spiderFall {
-            0% { top: -60px; transform: rotate(0deg) scale(1); opacity: 1; }
-            25% { transform: rotate(20deg) scale(1.1); }
-            50% { transform: rotate(-15deg) scale(0.9); }
-            75% { transform: rotate(25deg) scale(1.15); }
-            100% { top: 105vh; transform: rotate(-10deg) scale(1); opacity: 0.9; }
+        .serif-retro { font-family: 'Playfair Display', serif; }
+        .handwriting { font-family: 'Caveat', cursive; }
+        .mono-cam { font-family: 'Courier Prime', monospace; }
+
+        /* Washi Tape (Selotip Hias) */
+        .washi-tape {
+            background-color: rgba(107, 142, 107, 0.85);
+            background-image: repeating-linear-gradient(45deg, transparent, transparent 6px, rgba(255,255,255,0.35) 6px, rgba(255,255,255,0.35) 12px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+        .washi-pink {
+            background-color: rgba(232, 141, 180, 0.85);
+            background-image: radial-gradient(#fff 1.5px, transparent 1.5px);
+            background-size: 10px 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
         }
 
-        /* --- ANIMASI GERAK OTOMATIS SAAT BERPINDAH SLIDE --- */
-        .stage-reveal {
-            opacity: 0;
-            transform: translateY(60px) scale(0.97);
-            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: opacity, transform;
+        /* Bingkai Film 35mm */
+        .film-strip {
+            background-color: #181412;
+            border-top: 10px dashed #faf6f0;
+            border-bottom: 10px dashed #faf6f0;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
         }
-        .stage-reveal.active {
-            opacity: 1;
-            transform: translateY(0) scale(1);
+
+        /* Kertas Buku Bergaris */
+        .notebook-paper {
+            background-color: #fffdf9;
+            background-image: linear-gradient(#e5dcd0 1px, transparent 1px);
+            background-size: 100% 28px;
+        }
+
+        .filter-btn.active-filter {
+            background-color: #2c1e16;
+            color: #faf6f0;
+            transform: scale(1.05);
+        }
+
+        @keyframes recBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.1; }
+        }
+        .rec-dot { animation: recBlink 1s infinite; }
+
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(-1deg); }
+            50% { transform: translateY(-6px) rotate(1deg); }
+        }
+        .animate-float { animation: floatSlow 4s ease-in-out infinite; }
+
+        @keyframes pulseSticker {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.06); }
+        }
+        .animate-pulse-sticker { animation: pulseSticker 2s ease-in-out infinite; }
+
+        /* Animasi Bintang Kursor */
+        .cursor-sparkle {
+            position: absolute;
+            pointer-events: none;
+            font-size: 14px;
+            animation: sparkleFade 0.8s linear forwards;
+            z-index: 9999;
+        }
+        @keyframes sparkleFade {
+            0% { transform: translate(0, 0) scale(1); opacity: 1; }
+            100% { transform: translate(var(--dx), var(--dy)) scale(0.3); opacity: 0; }
+        }
+
+        /* Efek Kilatan Flash Kamera */
+        @keyframes flashEffect {
+            0% { opacity: 0.85; }
+            100% { opacity: 0; }
+        }
+        .camera-flash {
+            position: fixed;
+            inset: 0;
+            background-color: #ffffff;
+            pointer-events: none;
+            z-index: 9998;
+            animation: flashEffect 0.35s ease-out forwards;
         }
     </style>
 </head>
-<body class="relative overflow-x-hidden retro-grid dark-mode">
+<body class="antialiased selection:bg-pink-300 selection:text-stone-900 pb-16">
 
-    <!-- AUDIO LATAR BELAKANG -->
-    <audio id="bgMusic" loop preload="auto">
-        <source src="WhatsApp Audio 2026-11-10 at 13.24.43.mpeg" type="audio/mp4">
-        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a7395b.mp3?filename=8-bit-arcade-mode-158814.mp3" type="audio/mpeg">
+    <!-- HIASAN RENDA SAMPING -->
+    <div class="lace-border-left hidden sm:block"></div>
+
+    <!-- ELEMEN AUDIO / MUSIK LATAR -->
+    <audio id="bgMusic" loop>
+        <source src="WhatsApp Audio 2026-11-10 at 13.24.43.mpeg" type="audio/mpeg">
     </audio>
 
-    <!-- CONTAINER LABA-LABA BERJATUHAN -->
-    <div id="spiderRainContainer" class="pointer-events-none fixed inset-0 z-40 overflow-hidden"></div>
-
-    <!-- Navigation Bar -->
-    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 nav-bg backdrop-blur-md transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="retro-title text-sm sm:text-base text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-yellow-500 to-cyan-500 tracking-wider">
-                <i class="fa-solid fa-spider text-pink-500 mr-2"></i>RETRO-PORTFOLIO
-            </a>
+    <!-- POPUP DETAIL PROYEK -->
+    <div id="projectModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden p-4">
+        <div class="bg-[#fffdf9] rounded-2xl border-4 border-[#2c1e16] shadow-2xl max-w-lg w-full overflow-hidden relative animate-float" style="animation-iteration-count: 1;">
+            <div class="bg-[#2c1e16] text-white px-5 py-3 flex items-center justify-between">
+                <span id="modalTag" class="mono-cam text-xs font-bold text-amber-300 tracking-wider">PROJECT DETAIL</span>
+                <button onclick="closeProjectModal()" class="text-stone-300 hover:text-pink-400 text-lg font-bold cursor-pointer">✕</button>
+            </div>
             
-            <div class="hidden md:flex items-center space-x-8 font-semibold text-sm">
-                <div class="flex space-x-6 text-desc">
-                    <a href="#home" class="hover:text-pink-500 transition-colors">BERANDA</a>
-                    <a href="#about" class="hover:text-pink-500 transition-colors">TENTANG</a>
-                    <a href="#education" class="hover:text-pink-500 transition-colors">PENDIDIKAN</a>
-                    <a href="#skills" class="hover:text-pink-500 transition-colors">KEAHLIAN</a>
-                    <a href="#projects" class="hover:text-pink-500 transition-colors">PROYEK</a>
-                    <a href="#contact" class="hover:text-pink-500 transition-colors">KONTAK</a>
+            <div class="h-52 w-full bg-stone-900 overflow-hidden border-b-2 border-[#2c1e16]">
+                <img id="modalImg" src="" alt="Preview Proyek" class="w-full h-full object-cover">
+            </div>
+
+            <div class="p-6 space-y-3">
+                <h3 id="modalTitle" class="serif-retro text-2xl font-extrabold text-[#2c1e16]">Judul Proyek</h3>
+                <p id="modalDesc" class="text-xs sm:text-sm text-[#4a3525] leading-relaxed">Deskripsi lengkap proyek.</p>
+                
+                <div class="bg-[#f5ebe0] p-3.5 rounded-xl border border-dashed border-[#4a3525] space-y-1.5">
+                    <p class="mono-cam text-[11px] font-bold text-[#2c1e16] uppercase">✨ Fitur & Teknologi Utama:</p>
+                    <p id="modalTech" class="text-xs font-semibold text-[#6b8e6b]">HTML, CSS, JavaScript</p>
                 </div>
-                <button id="themeToggle" class="w-10 h-10 rounded-full glass-retro flex items-center justify-center text-pink-500 hover:scale-110 transition-transform focus:outline-none shadow-md" title="Ubah Mode Tampilan">
-                    <i id="themeIcon" class="fa-solid fa-moon text-lg"></i>
-                </button>
-            </div>
 
-            <div class="flex items-center space-x-4 md:hidden">
-                <button id="themeToggleMobile" class="w-9 h-9 rounded-full glass-retro flex items-center justify-center text-pink-500 focus:outline-none">
-                    <i id="themeIconMobile" class="fa-solid fa-moon text-base"></i>
-                </button>
-                <button id="menuBtn" class="text-pink-500 text-2xl focus:outline-none">
-                    <i class="fa-solid fa-gamepad"></i>
-                </button>
-            </div>
-        </div>
-
-        <div id="mobileMenu" class="hidden md:hidden nav-bg border-t border-pink-500/30 px-6 py-4 space-y-3 font-semibold text-sm">
-            <a href="#home" class="block text-desc hover:text-pink-500 mobile-link">Beranda</a>
-            <a href="#about" class="block text-desc hover:text-pink-500 mobile-link">Tentang</a>
-            <a href="#education" class="block text-desc hover:text-pink-500 mobile-link">Pendidikan</a>
-            <a href="#skills" class="block text-desc hover:text-pink-500 mobile-link">Keahlian</a>
-            <a href="#projects" class="block text-desc hover:text-pink-500 mobile-link">Proyek</a>
-            <a href="#contact" class="block text-desc hover:text-pink-500 mobile-link">Kontak</a>
-        </div>
-    </nav>
-
-    <!-- Main Content Container -->
-    <div class="relative z-10">
-
-        <!-- 1. Hero Section -->
-        <section id="home" class="min-h-screen flex items-center justify-center pt-28 pb-12 px-6 stage-reveal">
-            <div class="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="text-left space-y-6">
-                    <span class="stage-badge">HERO ZONE 🕸️</span>
-                    
-                    <!-- TOMBOL PRESS START UNTUK MUSIK -->
-                    <button id="pressStartBtn" class="block px-5 py-3 rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 text-yellow-300 text-xs retro-title border border-yellow-300/50 shadow-[0_0_15px_rgba(234,179,8,0.5)] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer">
-                        <span id="startBtnText">PRESS START TO PLAY ▶</span>
+                <div class="pt-2 flex justify-end">
+                    <button onclick="closeProjectModal()" class="px-5 py-2 rounded-xl bg-[#2c1e16] hover:bg-[#4a3525] text-white font-extrabold text-xs transition-all cursor-pointer">
+                        Tutup Preview 🎀
                     </button>
-
-                    <h1 class="text-3xl sm:text-5xl font-extrabold text-main leading-tight">
-                        HALO, SAYA <br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-yellow-500 to-cyan-500">
-                            ALYA SEPTIANI RAMADHAN
-                        </span>
-                    </h1>
-                    <h2 class="text-lg sm:text-xl text-yellow-500 font-semibold flex items-center gap-2">
-                        <span>&lt; Pelajar Programmer &amp; Creative Designer /&gt;</span>
-                    </h2>
-                    <p class="text-desc text-base max-w-lg leading-relaxed">
-                        Mengembangkan solusi digital yang modern, responsif, dan estetis dengan fokus pada pengalaman pengguna yang intuitif dan penuh estetika tinggi.
-                    </p>
-                    <div class="flex flex-wrap gap-4 pt-2">
-                        <a href="#projects" class="px-7 py-3.5 rounded-lg bg-gradient-to-r from-pink-600 to-yellow-500 text-slate-950 font-bold shadow-[0_0_15px_rgba(236,72,153,0.6)] hover:scale-105 transition-all duration-300">
-                            LIHAT KARYA 🚀
-                        </a>
-                        <a href="#contact" class="px-7 py-3.5 rounded-lg glass-retro text-pink-500 font-semibold hover:bg-pink-500/20 transition-all duration-300">
-                            HUBUNGI SAYA
-                        </a>
-                    </div>
-                </div>
-
-                <div class="flex justify-center items-center">
-                    <div class="relative w-64 h-64 sm:w-80 sm:h-80">
-                        <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-pink-500 via-purple-600 to-cyan-400 opacity-75 blur-2xl animate-pulse"></div>
-                        <div class="relative w-full h-full rounded-2xl border-4 border-yellow-400 overflow-hidden glass-retro flex items-center justify-center transform rotate-3 hover:rotate-0 transition-transform duration-500 shadow-[0_0_30px_rgba(250,204,21,0.4)]">
-                            <img src="foto latar merah.jpeg" alt="Profile" class="w-full h-full object-cover">
-                        </div>
-                    </div>
                 </div>
             </div>
-        </section>
-
-        <!-- 2. About Section -->
-        <section id="about" class="py-20 px-6 stage-reveal">
-            <div class="max-w-5xl mx-auto">
-                <div class="text-center mb-12">
-                    <span class="stage-badge">PLAYER STATS 🕷️</span>
-                    <h2 class="retro-title text-2xl sm:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-yellow-500 mb-3">TENTANG SAYA</h2>
-                    <div class="w-24 h-1.5 bg-gradient-to-r from-pink-500 to-yellow-500 mx-auto rounded-full"></div>
-                </div>
-
-                <div class="glass-retro p-8 sm:p-10 rounded-2xl text-desc leading-relaxed shadow-2xl border-l-4 border-l-yellow-400">
-                    <p class="text-lg mb-6 text-main font-medium">
-                        Saya adalah pelajar yang memiliki minat di bidang Web Development dan UI/UX Design. Saya menciptakan website yang menarik, mengembangkan ide kreatif, serta menggabungkan teknologi dengan desain visual untuk menghasilkan pengalaman digital yang unik dan fungsional.
-                    </p>    
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 text-center">
-                        <div class="p-4 rounded-xl card-bg-sub border border-pink-500/30 transform hover:-translate-y-2 transition-transform duration-300">
-                            <h3 class="text-3xl font-extrabold text-yellow-500">3+</h3>
-                            <p class="text-xs text-desc mt-1 uppercase tracking-wider font-semibold">Tahun Pengalaman</p>
-                        </div>
-                        <div class="p-4 rounded-xl card-bg-sub border border-pink-500/30 transform hover:-translate-y-2 transition-transform duration-300">
-                            <h3 class="text-3xl font-extrabold text-yellow-500">8+</h3>
-                            <p class="text-xs text-desc mt-1 uppercase tracking-wider font-semibold">Proyek Selesai</p>
-                        </div>
-                        <div class="p-4 rounded-xl card-bg-sub border border-pink-500/30 transform hover:-translate-y-2 transition-transform duration-300">
-                            <h3 class="text-3xl font-extrabold text-yellow-500">100%</h3>
-                            <p class="text-xs text-desc mt-1 uppercase tracking-wider font-semibold">Semangat Juang</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. Education Section -->
-        <section id="education" class="py-20 px-6 stage-reveal">
-            <div class="max-w-5xl mx-auto">
-                <div class="text-center mb-12">
-                    <span class="stage-badge">QUEST LOG 📜</span>
-                    <h2 class="retro-title text-2xl sm:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-yellow-500 mb-3">RIWAYAT PENDIDIKAN</h2>
-                    <div class="w-24 h-1.5 bg-gradient-to-r from-pink-500 to-yellow-500 mx-auto rounded-full"></div>
-                </div>
-
-                <div class="space-y-6">
-                    <div class="glass-retro p-6 sm:p-8 rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-r-4 border-r-pink-500">
-                        <div class="flex items-start gap-4">
-                            <div class="p-3 bg-pink-600/20 text-pink-500 rounded-xl border border-pink-500 text-2xl">
-                                <i class="fa-solid fa-graduation-cap"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-main">SMKN MANONJAYA</h3>
-                                <p class="text-pink-500 font-semibold text-sm">SMK / Rekayasa Perangkat Lunak</p>
-                                <p class="text-desc text-sm mt-2">Mempelajari pemrograman web, basis data, algoritma, serta mendalami dunia coding secara profesional.</p>
-                            </div>
-                        </div>
-                        <span class="px-4 py-1.5 rounded-full bg-gradient-to-r from-pink-600 to-purple-600 text-yellow-200 text-xs font-bold border border-yellow-300/40 whitespace-nowrap">
-                            2024 - Sekarang
-                        </span>
-                    </div>
-
-                    <div class="glass-retro p-6 sm:p-8 rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-r-4 border-r-purple-500">
-                        <div class="flex items-start gap-4">
-                            <div class="p-3 bg-pink-600/20 text-pink-500 rounded-xl border border-pink-500 text-2xl">
-                                <i class="fa-solid fa-school"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-main">SMPN 1 MANONJAYA</h3>
-                                <p class="text-pink-500 font-semibold text-sm">Sekolah Menengah Pertama</p>
-                                <p class="text-desc text-sm mt-2">Aktif dalam kegiatan sekolah dan mulai menumbuhkan ketertarikan besar pada teknologi komputer.</p>
-                            </div>
-                        </div>
-                        <span class="px-4 py-1.5 rounded-full card-bg-sub text-desc text-xs font-semibold border border-purple-500/40 whitespace-nowrap">
-                            2021 - 2024
-                        </span>
-                    </div>
-
-                    <div class="glass-retro p-6 sm:p-8 rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-r-4 border-r-cyan-500">
-                        <div class="flex items-start gap-4">
-                            <div class="p-3 bg-pink-600/20 text-pink-500 rounded-xl border border-pink-500 text-2xl">
-                                <i class="fa-solid fa-book-open"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-main">SDN 2 MANONJAYA</h3>
-                                <p class="text-pink-500 font-semibold text-sm">Sekolah Dasar</p>
-                                <p class="text-desc text-sm mt-2">Menyelesaikan pendidikan dasar dengan fondasi disiplin dan semangat belajar yang kuat.</p>
-                            </div>
-                        </div>
-                        <span class="px-4 py-1.5 rounded-full card-sub text-desc text-xs font-semibold border border-purple-500/40 whitespace-nowrap">
-                            2015 - 2021
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. Skills Section -->
-        <section id="skills" class="py-20 px-6 stage-reveal">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center mb-16">
-                    <span class="stage-badge">SKILL TREE ⚡</span>
-                    <h2 class="retro-title text-2xl sm:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-yellow-500 mb-3">KEAHLIAN UTAMA</h2>
-                    <div class="w-24 h-1.5 bg-gradient-to-r from-pink-500 to-yellow-500 mx-auto rounded-full"></div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="glass-retro p-8 rounded-2xl space-y-6">
-                        <h3 class="text-xl font-bold text-yellow-500 mb-4 flex items-center gap-2">
-                            <i class="fa-solid fa-code"></i> Pengembangan Web
-                        </h3>
-                        
-                        <div>
-                            <div class="flex justify-between text-sm text-desc mb-2 font-semibold">
-                                <span>HTML &amp; CSS / Tailwind</span>
-                                <span class="text-yellow-500 font-bold">90%</span>
-                            </div>
-                            <div class="w-full h-3 card-bg-sub rounded-full overflow-hidden border border-pink-500/40">
-                                <div class="skill-bar-inner h-full bg-gradient-to-r from-pink-500 via-purple-500 to-yellow-500 rounded-full" style="width: 90%;"></div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="flex justify-between text-sm text-desc mb-2 font-semibold">
-                                <span>JavaScript / React</span>
-                                <span class="text-yellow-500 font-bold">80%</span>
-                            </div>
-                            <div class="w-full h-3 card-bg-sub rounded-full overflow-hidden border border-pink-500/40">
-                                <div class="skill-bar-inner h-full bg-gradient-to-r from-pink-500 via-purple-500 to-yellow-500 rounded-full" style="width: 80%;"></div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="flex justify-between text-sm text-desc mb-2 font-semibold">
-                                <span>Node.js / Express</span>
-                                <span class="text-yellow-500 font-bold">70%</span>
-                            </div>
-                            <div class="w-full h-3 card-bg-sub rounded-full overflow-hidden border border-pink-500/40">
-                                <div class="skill-bar-inner h-full bg-gradient-to-r from-pink-500 via-purple-500 to-yellow-500 rounded-full" style="width: 70%;"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="glass-retro p-8 rounded-2xl">
-                        <h3 class="text-xl font-bold text-yellow-500 mb-6 flex items-center gap-2">
-                            <i class="fa-solid fa-toolbox"></i> Desain &amp; Tools
-                        </h3>
-                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                            <div class="p-4 rounded-xl card-bg-sub border border-pink-500/30 text-center hover:bg-pink-600/20 hover:scale-105 transition-all">
-                                <i class="fa-brands fa-figma text-3xl text-pink-500 mb-2"></i>
-                                <p class="text-sm text-desc font-semibold">Figma</p>
-                            </div>
-                            <div class="p-4 rounded-xl card-sub border border-pink-500/30 text-center hover:bg-pink-600/20 hover:scale-105 transition-all">
-                                <i class="fa-brands fa-git-alt text-3xl text-yellow-500 mb-2"></i>
-                                <p class="text-sm text-desc font-semibold">Git</p>
-                            </div>
-                            <div class="p-4 rounded-xl card-sub border border-pink-500/30 text-center hover:bg-pink-600/20 hover:scale-105 transition-all">
-                                <i class="fa-brands fa-github text-3xl text-cyan-500 mb-2"></i>
-                                <p class="text-sm text-desc font-semibold">GitHub</p>
-                            </div>
-                            <div class="p-4 rounded-xl card-sub border border-pink-500/30 text-center hover:bg-pink-600/20 hover:scale-105 transition-all">
-                                <i class="fa-solid fa-database text-3xl text-pink-500 mb-2"></i>
-                                <p class="text-sm text-desc font-semibold">SQL &amp; Mongo</p>
-                            </div>
-                            <div class="p-4 rounded-xl card-sub border border-pink-500/30 text-center hover:bg-pink-600/20 hover:scale-105 transition-all">
-                                <i class="fa-brands fa-npm text-3xl text-yellow-500 mb-2"></i>
-                                <p class="text-sm text-desc font-semibold">NPM</p>
-                            </div>
-                            <div class="p-4 rounded-xl card-sub border border-pink-500/30 text-center hover:bg-pink-600/20 hover:scale-105 transition-all">
-                                <i class="fa-solid fa-code text-3xl text-cyan-500 mb-2"></i>
-                                <p class="text-sm text-desc font-semibold">VS Code</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5. Projects Section -->
-        <section id="projects" class="py-20 px-6 stage-reveal">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center mb-12">
-                    <span class="stage-badge">LOOT GALLERY 📷</span>
-                    <h2 class="retro-title text-2xl sm:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-yellow-500 mb-3">PORTOFOLIO PROYEK</h2>
-                    <p class="text-desc">Kumpulan karya digital terbaik yang pernah saya buat</p>
-                    <div class="w-24 h-1.5 bg-gradient-to-r from-pink-500 to-yellow-500 mx-auto mt-3 rounded-full"></div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="glass-retro rounded-2xl overflow-hidden hover:scale-105 hover:-translate-y-2 transition-all duration-300 shadow-xl">
-                        <div class="h-48 overflow-hidden relative">
-                            <img src="fletroom.jfif" alt="Project 1" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-6">
-                            <span class="text-xs font-bold text-yellow-500 uppercase tracking-wider">Web Application</span>
-                            <h3 class="text-xl font-bold text-main mt-1 mb-2">E-Commerce Platform</h3>
-                            <p class="text-desc text-sm mb-4">Aplikasi toko online modern berbasis React dan Tailwind CSS dengan fitur keranjang belanja interaktif.</p>
-                            <div class="flex justify-between items-center pt-2 border-t border-pink-500/30">
-                                <span class="text-xs text-pink-500 font-semibold">React, Tailwind</span>
-                                <a href="#" class="text-yellow-500 font-bold hover:underline text-sm flex items-center gap-1">
-                                    Detail <i class="fa-solid fa-arrow-right text-xs"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="glass-retro rounded-2xl overflow-hidden hover:scale-105 hover:-translate-y-2 transition-all duration-300 shadow-xl">
-                        <div class="h-48 overflow-hidden relative">
-                            <img src="dashboard laundry.avif" alt="Project 2" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-6">
-                            <span class="text-xs font-bold text-yellow-500 uppercase tracking-wider">UI/UX Design</span>
-                            <h3 class="text-xl font-bold text-main mt-1 mb-2">Dashboard Analytics Laundry</h3>
-                            <p class="text-desc text-sm mb-4">Desain antarmuka dashboard analitik data keuangan dengan tema retro-dark mode yang elegan.</p>
-                            <div class="flex justify-between items-center pt-2 border-t border-pink-500/30">
-                                <span class="text-xs text-pink-500 font-semibold">Figma, Prototype</span>
-                                <a href="#" class="text-yellow-500 font-bold hover:underline text-sm flex items-center gap-1">
-                                    Detail <i class="fa-solid fa-arrow-right text-xs"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="glass-retro rounded-2xl overflow-hidden hover:scale-105 hover:-translate-y-2 transition-all duration-300 shadow-xl">
-                        <div class="h-48 overflow-hidden relative">
-                            <img src="company profile accessmedia.jfif" alt="Project 3" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-6">
-                            <span class="text-xs font-bold text-yellow-500 uppercase tracking-wider">Web Application</span>
-                            <h3 class="text-xl font-bold text-main mt-1 mb-2">Company Profile</h3>
-                            <p class="text-desc text-sm mb-4">Website profil perusahaan Access media interaktif dengan animasi smooth scrolling dan desain futuristik.</p>
-                            <div class="flex justify-between items-center pt-2 border-t border-pink-500/30">
-                                <span class="text-xs text-pink-500 font-semibold">HTML, Tailwind, JS</span>
-                                <a href="#" class="text-yellow-500 font-bold hover:underline text-sm flex items-center gap-1">
-                                    Detail <i class="fa-solid fa-arrow-right text-xs"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 6. Contact Section -->
-        <section id="contact" class="py-20 px-6 stage-reveal">
-            <div class="max-w-4xl mx-auto">
-                <div class="glass-retro p-8 sm:p-12 rounded-3xl shadow-2xl border-2 border-pink-500/50 relative overflow-hidden">
-                    <div class="absolute -top-10 -right-10 text-pink-500/10 text-9xl pointer-events-none">
-                        <i class="fa-solid fa-spider"></i>
-                    </div>
-
-                    <div class="text-center mb-10 relative z-10">
-                        <span class="stage-badge">FINAL STAGE: TRANSMIT SIGNAL ⚡</span>
-                        <h2 class="retro-title text-2xl sm:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-yellow-500 mb-2">HUBUNGI SAYA</h2>
-                        <p class="text-desc">Kirimkan pesan langsung melalui form atau hubungi saya melalui tombol cepat di bawah.</p>
-                        <div class="w-16 h-1 bg-yellow-500 mx-auto mt-3 rounded-full"></div>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10 relative z-10">
-                        <a href="mailto:alyaseptianiramadhan@gmail.com" class="p-5 rounded-2xl card-bg-sub flex items-center gap-4 hover:scale-[1.03] transition-all duration-300 group border border-pink-500/40">
-                            <div class="w-12 h-12 rounded-xl bg-pink-600/20 text-pink-500 flex items-center justify-center text-xl group-hover:bg-pink-600 group-hover:text-white transition-all">
-                                <i class="fa-solid fa-envelope"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs text-slate-400 font-semibold uppercase">Kirim Email</p>
-                                <p class="text-sm font-bold text-main">Email Langsung</p>
-                            </div>
-                        </a>
-
-                        <a href="https://wa.me/6280000000000?text=Halo%20Alya,%20saya%20tertarik%20dengan%20portofolio%20Anda!" target="_blank" class="p-5 rounded-2xl card-bg-sub flex items-center gap-4 hover:scale-[1.03] transition-all duration-300 group border border-pink-500/40">
-                            <div class="w-12 h-12 rounded-xl bg-cyan-600/20 text-cyan-400 flex items-center justify-center text-xl group-hover:bg-cyan-600 group-hover:text-white transition-all">
-                                <i class="fa-brands fa-whatsapp"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs text-slate-400 font-semibold uppercase">Chat Cepat</p>
-                                <p class="text-sm font-bold text-main">WhatsApp Messenger</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <form id="contactForm" class="space-y-6 relative z-10">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-sm font-semibold text-pink-500 mb-2">Nama Lengkap</label>
-                                <input type="text" id="senderName" required placeholder="Masukkan nama anda" class="form-input w-full px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold text-pink-500 mb-2">Alamat Email</label>
-                                <input type="email" id="senderEmail" required placeholder="nama@email.com" class="form-input w-full px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all">
-                            </div>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold text-pink-500 mb-2">Pesan / Subjek</label>
-                            <textarea id="senderMessage" rows="4" required placeholder="Tulis pesan anda di sini..." class="form-input w-full px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all"></textarea>
-                        </div>
-                        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-pink-600 via-purple-600 to-yellow-500 text-slate-950 font-extrabold text-lg shadow-[0_0_20px_rgba(236,72,153,0.5)] hover:scale-[1.02] active:scale-95 transition-all duration-300">
-                            KIRIM PESAN KE WHATSAPP ⚡
-                        </button>
-                    </form>
-
-                    <div class="flex justify-center space-x-6 mt-10 pt-6 border-t border-pink-500/30 relative z-10">
-                        <a href="#" class="w-12 h-12 rounded-full card-bg-sub border border-pink-500/50 flex items-center justify-center text-pink-500 hover:bg-yellow-500 hover:text-slate-950 transition-all transform hover:scale-110">
-                            <i class="fa-brands fa-github text-xl"></i>
-                        </a>
-                        <a href="#" class="w-12 h-12 rounded-full card-bg-sub border border-pink-500/50 flex items-center justify-center text-pink-500 hover:bg-yellow-500 hover:text-slate-950 transition-all transform hover:scale-110">
-                            <i class="fa-brands fa-linkedin-in text-xl"></i>
-                        </a>
-                        <a href="#" class="w-12 h-12 rounded-full card-bg-sub border border-pink-500/50 flex items-center justify-center text-pink-500 hover:bg-yellow-500 hover:text-slate-950 transition-all transform hover:scale-110">
-                            <i class="fa-brands fa-instagram text-xl"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="py-8 text-center text-desc text-sm border-t border-pink-500/20 nav-bg">
-            <p>© 2026 Alya Septiani Ramadhan. Crafted with Retro Vibe &amp; Tailwind CSS.</p>
-        </footer>
-
+        </div>
     </div>
 
-    <!-- JAVASCRIPT -->
+    <!-- POPUP KARTU UCAPAN RETRO (MODAL WHATSAPP) -->
+    <div id="waModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm hidden">
+        <div class="bg-[#fffdf9] p-6 sm:p-8 rounded-2xl border-4 border-[#2c1e16] shadow-2xl max-w-sm w-full mx-4 text-center relative animate-pulse-sticker">
+            <div class="text-4xl mb-2">💌✨</div>
+            <h3 class="serif-retro text-xl font-extrabold text-[#2c1e16] mb-2">Pesan Terkirim!</h3>
+            <p class="text-xs text-[#4a3525] leading-relaxed mb-6">
+                Yeay! Pesan kamu sedang diterbangkan secara ajaib langsung ke WhatsApp Alya. Terima kasih ya sudah berkunjung! 🎀
+            </p>
+            <button onclick="closeWaModal()" class="w-full py-2.5 rounded-xl bg-[#6b8e6b] hover:bg-[#587858] text-white font-extrabold text-xs transition-all shadow border-2 border-[#2c1e16] cursor-pointer">
+                Tutup & Kembali ✨
+            </button>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-50 bg-[#fffdf9]/95 backdrop-blur-md border-b-4 border-dotted border-[#4a3525] px-4 sm:px-10 py-3 flex items-center justify-between shadow-md">
+        <div class="flex items-center gap-2.5">
+            <span class="w-9 h-9 rounded-full bg-[#2c1e16] text-[#faf6f0] border-2 border-dashed border-pink-300 flex items-center justify-center font-bold text-xs shadow animate-pulse-sticker">
+                AS
+            </span>
+            <div>
+                <span class="serif-retro text-sm sm:text-base font-extrabold text-[#2c1e16] block leading-none">Alya Septiani Ramadhan</span>
+                <span class="mono-cam text-[10px] text-[#6b8e6b] font-bold">★ DIGITAL SCRAPBOOK '26</span>
+            </div>
+        </div>
+
+        <nav class="hidden md:flex items-center gap-5 text-xs font-bold text-[#4a3525]">
+            <a href="#tentang" class="hover:text-pink-600 transition-colors">01. Digicam</a>
+            <a href="#keahlian" class="hover:text-pink-600 transition-colors">02. Skills</a>
+            <a href="#pendidikan" class="hover:text-pink-600 transition-colors">03. Diary</a>
+            <a href="#proyek" class="hover:text-pink-600 transition-colors">04. Film Roll</a>
+            <a href="#kontak" class="hover:text-pink-600 transition-colors">05. Postcard</a>
+        </nav>
+
+        <span class="mono-cam text-[11px] font-bold text-[#4a3525] hidden sm:inline-block">★ Welcome to my portofolio!</span>
+    </header>
+
+    <!-- KONTEN UTAMA FULL LAYAR -->
+    <main class="w-full space-y-0">
+
+        <!-- ================= SLIDE 1 ================= -->
+        <section id="tentang" class="scroll-mt-24 relative w-full py-12 px-4 sm:px-12 bg-polka-biscuit border-b-2 border-stone-300 shadow-inner">
+            <div class="max-w-4xl mx-auto relative">
+                <div class="w-28 h-7 absolute -top-3 left-8 -rotate-6 z-20 washi-tape rounded-sm flex items-center justify-center text-[10px] font-bold text-white tracking-widest animate-float">
+                    🎀 CANON Y2K
+                </div>
+                <div class="absolute -top-4 right-10 z-20 text-xl animate-bounce">⭐</div>
+
+                <div class="bg-gradient-to-b from-[#e6e4e0] via-[#cfccc6] to-[#b5b1a8] rounded-[2.2rem] p-5 sm:p-8 border-4 border-[#8c887e] shadow-[0_15px_35px_rgba(0,0,0,0.3)] relative">
+                    
+                    <div class="flex items-center justify-between mb-4 pb-3 border-b-2 border-[#a39f96]">
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-0.5 rounded bg-[#2c1e16] text-white mono-cam text-[10px] font-bold tracking-widest">DIGITAL IXUS</span>
+                            <span class="text-pink-500 text-sm animate-pulse">💖 ✨</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button onclick="toggleMusic()" id="musicBtn" class="px-3.5 py-1.5 rounded-full bg-[#2c1e16] hover:bg-[#4a3525] text-[#faf6f0] border-2 border-pink-300 text-[11px] font-bold flex items-center gap-2 transition-all shadow cursor-pointer">
+                                <i id="musicIcon" class="fa-solid fa-compact-disc"></i>
+                                <span id="musicText">Putar Musik 🎶</span>
+                            </button>
+                            <span class="w-3.5 h-3.5 rounded-full bg-emerald-500 border border-stone-700 shadow-inner"></span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                        <div class="md:col-span-9 bg-[#1b221e] p-4 sm:p-5 rounded-2xl border-4 border-[#524f49] shadow-inner text-[#e8f5e9] relative overflow-hidden">
+                            <div class="flex justify-between items-center mono-cam text-[11px] text-emerald-300 mb-3 border-b border-emerald-800/60 pb-1.5">
+                                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-red-600 rec-dot inline-block"></span> <span class="text-red-400 font-bold tracking-widest">REC</span> • [1024]</span>
+                                <span>ISO 200 • F2.8</span>
+                                <span>🔋 100%</span>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-12 gap-5 items-center">
+                                <div class="sm:col-span-4 flex justify-center">
+                                    <div onclick="triggerCameraShutter()" title="Klik untuk cekrek foto!" class="bg-white p-2 pb-5 rounded shadow-lg -rotate-2 border border-stone-300 w-36 sm:w-40 hover:rotate-0 transition-transform relative cursor-pointer">
+                                        <div class="absolute -top-3 -right-3 bg-pink-500 text-white text-[9px] font-extrabold px-2 py-1 rounded-full shadow-md rotate-6 animate-pulse-sticker">
+                                            ✨ READY FOR PKL
+                                        </div>
+                                        <div class="w-full h-40 overflow-hidden bg-stone-200">
+                                            <img src="foto latar merah.jpeg" alt="Alya Septiani Ramadhan" class="w-full h-full object-cover">
+                                        </div>
+                                        <p class="handwriting text-center text-stone-800 text-sm font-bold mt-1">Alya '26 🎀</p>
+                                    </div>
+                                </div>
+
+                                <div class="sm:col-span-8 space-y-2.5">
+                                    <span class="inline-block px-2.5 py-0.5 rounded bg-pink-500/20 border border-pink-400 text-pink-300 mono-cam text-[10px]">
+                                        PROFIL UTAMA • 2026
+                                    </span>
+                                    <h1 class="serif-retro text-2xl sm:text-3xl font-extrabold text-white leading-tight">
+                                        Alya Septiani Ramadhan
+                                    </h1>
+                                    <p class="mono-cam text-xs font-bold text-amber-300">
+                                        Siswi Rekayasa Perangkat Lunak • SMKN Manonjaya
+                                    </p>
+                                    <p class="text-xs sm:text-sm text-stone-200 leading-relaxed">
+                                        Halo! Saya seorang pelajar Rekayasa Perangkat Lunak yang memiliki ketertarikan mendalam pada pengembangan antarmuka web modern. Bagi saya, merancang sebuah website adalah perpaduan antara ketelitian logika kode dan keindahan estetika visual.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="md:col-span-3 flex md:flex-col items-center justify-center gap-4">
+                            <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-[#9e9a90] to-[#ebe8e1] border-4 border-[#7a766d] shadow-md flex items-center justify-center relative">
+                                <button onclick="triggerCameraShutter()" title="Cekrek Kamera" class="w-9 h-9 rounded-full bg-[#cfccc6] border-2 border-[#8c887e] flex items-center justify-center text-[10px] font-bold text-stone-700 hover:bg-pink-200 active:scale-90 transition cursor-pointer">
+                                    SNAP
+                                </button>
+                                <span class="absolute top-1 text-[8px] font-bold text-stone-600">▲</span>
+                                <span class="absolute bottom-1 text-[8px] font-bold text-stone-600">▼</span>
+                            </div>
+                            <div class="text-center space-y-1">
+                                <span class="inline-block px-3 py-1 rounded-full bg-stone-800 text-white mono-cam text-[10px] font-bold">DISP.</span>
+                                <p class="handwriting text-stone-800 text-base font-bold animate-pulse">★ Cute Mode ★</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SLIDE 2 ================= -->
+        <section class="w-full py-12 px-4 sm:px-12 bg-polka-espresso border-b-2 border-stone-900/50 shadow-inner">
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                    
+                    <section class="bg-[#fffdf9] p-6 sm:p-8 rounded-sm shadow-xl border border-stone-300 relative -rotate-1 hover:rotate-0 transition-transform">
+                        <div class="washi-pink w-24 h-6 absolute -top-3 left-1/2 -translate-x-1/2 rotate-2 animate-float"></div>
+                        <div class="absolute -bottom-3 -right-2 text-2xl">🧸</div>
+
+                        <div class="flex items-center justify-between border-b-2 border-dashed border-stone-300 pb-3 mb-4">
+                            <div>
+                                <span class="mono-cam text-[10px] font-bold text-pink-600 uppercase">NOTE // BAGIAN 02</span>
+                                <h2 class="serif-retro text-xl font-extrabold text-[#2c1e16]">Karakter & Visi Kerja</h2>
+                            </div>
+                            <span class="text-2xl animate-spin" style="animation-duration: 10s;">✨</span>
+                        </div>
+
+                        <p class="text-xs sm:text-sm text-[#4a3525] leading-relaxed mb-4">
+                            Saya dikenal sebagai pribadi yang terstruktur, cepat beradaptasi dengan teknologi baru, serta senang berkolaborasi dalam tim. Saya selalu memastikan setiap detail proyek tersusun rapi dan nyaman digunakan oleh pengguna.
+                        </p>
+
+                        <div class="bg-[#fdf2f8] border-l-4 border-pink-400 p-3.5 rounded-r-lg">
+                            <p class="handwriting text-lg sm:text-xl text-[#2c1e16] font-bold leading-snug">
+                                "Menciptakan solusi digital yang tidak hanya berfungsi dengan baik, tetapi juga berkesan saat dilihat."
+                            </p>
+                        </div>
+                    </section>
+
+                    <section class="bg-[#f4ede2] p-6 sm:p-8 rounded-2xl border-4 border-double border-[#4a3525] shadow-xl relative rotate-1 hover:rotate-0 transition-transform flex flex-col justify-between">
+                        <div class="w-6 h-6 rounded-full bg-[#2c1e16] absolute -left-3.5 top-1/2 -translate-y-1/2"></div>
+                        <div class="w-6 h-6 rounded-full bg-[#2c1e16] absolute -right-3.5 top-1/2 -translate-y-1/2"></div>
+                        <div class="absolute top-3 right-5 text-xl">🎟️</div>
+
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="px-2.5 py-0.5 bg-[#6b8e6b] text-white mono-cam text-[10px] font-bold rounded">ADMIT ONE • 03</span>
+                                <span class="mono-cam text-xs font-bold text-[#4a3525]">NO. 2026-RPL</span>
+                            </div>
+                            <h2 class="serif-retro text-xl font-extrabold text-[#2c1e16] mb-3">Komitmen & Kesiapan Kerja</h2>
+                            <p class="text-xs sm:text-sm text-[#4a3525] leading-relaxed">
+                                Saya memiliki komitmen tinggi terhadap ketepatan waktu penyelesaian tugas, keterbukaan terhadap kritik dan saran, serta kesiapan penuh untuk menghadapi tantangan nyata di lingkungan industri perangkat lunak.
+                            </p>
+                        </div>
+
+                        <div class="mt-5 pt-3 border-t-2 border-dashed border-[#8c7a6b] flex items-center gap-2.5">
+                            <span class="w-3 h-3 rounded-full bg-emerald-600 animate-ping"></span>
+                            <span class="text-xs font-bold text-[#2c1e16]">Siap berkontribusi aktif dalam program magang/PKL maupun tim pengembang profesional.</span>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SLIDE 3 ================= -->
+        <section class="w-full py-12 px-4 sm:px-12 bg-polka-biscuit border-b-2 border-stone-300 shadow-inner">
+            <div class="max-w-4xl mx-auto">
+                <div class="film-strip py-6 px-4 sm:px-8 rounded-lg text-white relative">
+                    <div class="absolute top-2 right-4 text-xs tracking-widest text-pink-300 font-mono">🎞️ KODAK VINTAGE FRAME</div>
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-4 px-2">
+                        <span class="mono-cam text-xs text-amber-400 font-bold tracking-widest">◀ KODAK PORTRA 400 • BAGIAN 04</span>
+                        <span class="mono-cam text-xs text-stone-300">📍 Tasikmalaya, Jawa Barat</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="bg-[#fffdf9] text-[#2c1e16] p-5 rounded-sm text-center shadow-inner border-2 border-stone-400 hover:scale-105 transition-transform">
+                            <p class="serif-retro text-3xl font-extrabold text-[#2c1e16]">3+</p>
+                            <p class="mono-cam text-xs font-bold text-[#6b8e6b] uppercase mt-1">Tahun RPL</p>
+                        </div>
+                        <div class="bg-[#fffdf9] text-[#2c1e16] p-5 rounded-sm text-center shadow-inner border-2 border-stone-400 hover:scale-105 transition-transform">
+                            <p class="serif-retro text-3xl font-extrabold text-pink-600">8+</p>
+                            <p class="mono-cam text-xs font-bold text-[#4a3525] uppercase mt-1">Proyek Selesai</p>
+                        </div>
+                        <div class="bg-[#fffdf9] text-[#2c1e16] p-5 rounded-sm text-center shadow-inner border-2 border-stone-400 hover:scale-105 transition-transform">
+                            <p class="serif-retro text-3xl font-extrabold text-[#6b8e6b]">100%</p>
+                            <p class="mono-cam text-xs font-bold text-[#4a3525] uppercase mt-1">Dedikasi</p>
+                        </div>
+                    </div>
+
+                    <p class="mono-cam text-center text-[11px] text-amber-200/90 mt-4">
+                        ★ Siap terhubung untuk kolaborasi proyek digital ★
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SLIDE 4 ================= -->
+        <section id="keahlian" class="scroll-mt-24 w-full py-12 px-4 sm:px-12 bg-polka-espresso border-b-2 border-stone-900/50 shadow-inner relative">
+            <div class="max-w-4xl mx-auto relative">
+                <div class="absolute top-2 right-6 z-10 text-2xl animate-bounce">📌</div>
+                <div class="inline-block bg-[#e6ccb2] text-[#2c1e16] px-6 py-2 rounded-t-2xl border-t-2 border-x-2 border-[#4a3525] font-extrabold text-xs uppercase tracking-wider shadow-sm">
+                    📂 Folder 05: Kompetensi Teknis
+                </div>
+                
+                <div class="bg-[#faf6f0] border-2 border-[#4a3525] rounded-b-3xl rounded-tr-3xl p-6 sm:p-10 shadow-2xl relative">
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-6">
+                        <h2 class="serif-retro text-2xl sm:text-3xl font-extrabold text-[#2c1e16]">Keahlian & Tools</h2>
+                        <span class="handwriting text-xl text-pink-600 font-bold animate-pulse">~ My Tech Stack ~</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white p-4 rounded-2xl border-2 border-dashed border-[#6b8e6b] shadow-sm space-y-4 hover:shadow-md transition-shadow">
+                            <div>
+                                <div class="flex justify-between text-xs font-extrabold text-[#2c1e16] mb-1.5">
+                                    <span>HTML5, CSS3 & Tailwind CSS</span>
+                                    <span class="px-2 py-0.5 bg-[#6b8e6b] text-white rounded-full text-[10px]">90%</span>
+                                </div>
+                                <div class="w-full h-3 bg-[#e6ccb2]/50 rounded-full p-0.5 border border-[#4a3525]/30">
+                                    <div class="h-full bg-[#6b8e6b] rounded-full transition-all duration-1000" style="width: 90%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-xs font-extrabold text-[#2c1e16] mb-1.5">
+                                    <span>JavaScript & React.js</span>
+                                    <span class="px-2 py-0.5 bg-[#4a3525] text-white rounded-full text-[10px]">80%</span>
+                                </div>
+                                <div class="w-full h-3 bg-[#e6ccb2]/50 rounded-full p-0.5 border border-[#4a3525]/30">
+                                    <div class="h-full bg-[#4a3525] rounded-full transition-all duration-1000" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-2xl border-2 border-dashed border-pink-400 shadow-sm space-y-4 hover:shadow-md transition-shadow">
+                            <div>
+                                <div class="flex justify-between text-xs font-extrabold text-[#2c1e16] mb-1.5">
+                                    <span>UI/UX Design (Figma)</span>
+                                    <span class="px-2 py-0.5 bg-pink-500 text-white rounded-full text-[10px]">85%</span>
+                                </div>
+                                <div class="w-full h-3 bg-pink-100 rounded-full p-0.5 border border-pink-300">
+                                    <div class="h-full bg-pink-400 rounded-full transition-all duration-1000" style="width: 85%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-xs font-extrabold text-[#2c1e16] mb-1.5">
+                                    <span>PHP & MySQL Database</span>
+                                    <span class="px-2 py-0.5 bg-amber-700 text-white rounded-full text-[10px]">75%</span>
+                                </div>
+                                <div class="w-full h-3 bg-amber-100 rounded-full p-0.5 border border-amber-300">
+                                    <div class="h-full bg-amber-700 rounded-full transition-all duration-1000" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SLIDE 5 ================= -->
+        <section id="pendidikan" class="scroll-mt-24 w-full py-12 px-4 sm:px-12 bg-polka-biscuit border-b-2 border-stone-300 shadow-inner relative">
+            <div class="max-w-4xl mx-auto">
+                <div class="notebook-paper rounded-3xl p-6 sm:p-10 border-4 border-[#4a3525] shadow-2xl relative overflow-hidden">
+                    <div class="hidden sm:block absolute top-0 bottom-0 left-14 w-0.5 bg-rose-400/70"></div>
+                    <div class="absolute top-4 right-6 text-2xl animate-float">✍️</div>
+
+                    <div class="sm:pl-10 space-y-6">
+                        <div class="flex items-center justify-between border-b-2 border-[#2c1e16] pb-3">
+                            <div>
+                                <span class="mono-cam text-xs font-bold text-[#6b8e6b]">DIARY ENTRY • JEJAK AKADEMIK</span>
+                                <h2 class="serif-retro text-2xl sm:text-3xl font-extrabold text-[#2c1e16]">Riwayat Pendidikan</h2>
+                            </div>
+                            <span class="text-2xl">📖</span>
+                        </div>
+
+                        <div class="space-y-5">
+                            <div class="bg-[#fdf2f8]/90 p-4 rounded-xl border border-pink-300 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:translate-x-1 transition-transform">
+                                <div>
+                                    <h3 class="font-extrabold text-base text-[#2c1e16]">🎓 SMKN MANONJAYA</h3>
+                                    <p class="text-xs font-semibold text-[#4a3525]">Jurusan Rekayasa Perangkat Lunak (RPL)</p>
+                                </div>
+                                <span class="self-start sm:self-center px-3 py-1 rounded-full bg-[#2c1e16] text-pink-200 mono-cam text-xs font-bold">
+                                    2024 – Sekarang
+                                </span>
+                            </div>
+
+                            <div class="bg-[#f0f7f0]/90 p-4 rounded-xl border border-[#6b8e6b]/50 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:translate-x-1 transition-transform">
+                                <div>
+                                    <h3 class="font-extrabold text-base text-[#2c1e16]">🏫 SMPN 1 MANONJAYA</h3>
+                                    <p class="text-xs font-semibold text-[#4a3525]">Sekolah Menengah Pertama</p>
+                                </div>
+                                <span class="self-start sm:self-center px-3 py-1 rounded-full bg-[#6b8e6b] text-white mono-cam text-xs font-bold">
+                                    2021 – 2024
+                                </span>
+                            </div>
+
+                            <div class="bg-[#faf6f0]/90 p-4 rounded-xl border border-[#8c7a6b]/50 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:translate-x-1 transition-transform">
+                                <div>
+                                    <h3 class="font-extrabold text-base text-[#2c1e16]">✏️ SDN 2 MANONJAYA</h3>
+                                    <p class="text-xs font-semibold text-[#4a3525]">Sekolah Dasar</p>
+                                </div>
+                                <span class="self-start sm:self-center px-3 py-1 rounded-full bg-[#e6ccb2] text-[#2c1e16] mono-cam text-xs font-bold">
+                                    2015 – 2021
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SLIDE 6 ================= -->
+        <section id="proyek" class="scroll-mt-24 w-full py-12 px-4 sm:px-12 bg-polka-espresso border-b-2 border-stone-900/50 shadow-inner relative">
+            <div class="max-w-4xl mx-auto relative">
+                <div class="absolute top-2 left-10 text-xl animate-bounce">📷</div>
+
+                <div class="bg-[#4a3525] rounded-3xl p-6 sm:p-10 border-4 border-dashed border-[#faf6f0] shadow-2xl space-y-8 relative">
+                    <div class="flex flex-wrap items-end justify-between gap-4">
+                        <div>
+                            <span class="px-3 py-1 rounded-full bg-pink-300 text-[#2c1e16] mono-cam text-[11px] font-bold">📸 PHOTO GALLERY (KLIK FOTO UNTUK DETAIL)</span>
+                            <h2 class="serif-retro text-2xl sm:text-3xl font-extrabold text-[#faf6f0] mt-2">Proyek Pilihan</h2>
+                        </div>
+
+                        <div class="flex flex-wrap gap-1.5 bg-[#faf6f0] p-1.5 rounded-2xl shadow-md">
+                            <button onclick="filterProjects('all')" id="filter-all" class="filter-btn active-filter px-3 py-1.5 rounded-xl text-xs font-extrabold text-[#2c1e16] transition-all cursor-pointer">Semua</button>
+                            <button onclick="filterProjects('react')" id="filter-react" class="filter-btn px-3 py-1.5 rounded-xl text-xs font-extrabold text-[#2c1e16] transition-all cursor-pointer">React</button>
+                            <button onclick="filterProjects('ui')" id="filter-ui" class="filter-btn px-3 py-1.5 rounded-xl text-xs font-extrabold text-[#2c1e16] transition-all cursor-pointer">UI/UX Figma</button>
+                            <button onclick="filterProjects('web')" id="filter-web" class="filter-btn px-3 py-1.5 rounded-xl text-xs font-extrabold text-[#2c1e16] transition-all cursor-pointer">PHP / Web</button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="projectGrid">
+                        
+                        <!-- Proyek 1 -->
+                        <div onclick="openProjectModal('React App', 'E-Commerce Platform', 'fletroom.jfif', 'Aplikasi toko online modern yang dilengkapi katalog produk interaktif, keranjang belanja otomatis, filter pencarian cepat, dan tampilan responsif di berbagai ukuran layar.', 'React.js • Tailwind CSS • JavaScript ES6')" class="project-card bg-[#fffdf9] p-3.5 pb-6 rounded-sm shadow-xl -rotate-1 hover:rotate-0 transition-all flex flex-col justify-between border border-stone-300 hover:scale-[1.03] cursor-pointer" data-category="react">
+                            <div>
+                                <div class="h-44 overflow-hidden relative bg-stone-900 border-2 border-stone-800 group">
+                                    <img src="fletroom.jfif" alt="E-Commerce" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                    <span class="absolute top-2 left-2 px-2 py-0.5 bg-[#2c1e16] text-amber-300 mono-cam text-[10px] font-bold">React App</span>
+                                    <span class="absolute bottom-2 right-2 px-2 py-0.5 bg-white/90 text-[#2c1e16] text-[10px] font-extrabold rounded shadow">🔍 Detail</span>
+                                </div>
+                                <div class="pt-4 space-y-1.5">
+                                    <h3 class="serif-retro font-extrabold text-base text-[#2c1e16]">E-Commerce Platform</h3>
+                                    <p class="text-xs text-[#4a3525]">Aplikasi toko online modern dengan katalog produk interaktif.</p>
+                                </div>
+                            </div>
+                            <p class="handwriting text-right text-pink-600 text-base font-bold mt-2">#01 React • Klik Detail</p>
+                        </div>
+
+                        <!-- Proyek 2 -->
+                        <div onclick="openProjectModal('UI/UX & System', 'Dashboard Manajemen Laundry', 'dashboard laundry.avif', 'Sistem informasi manajemen laundry berbasis web untuk pencatatan transaksi masuk/keluar, status cucian pelanggan, bukti foto serah terima, serta rekap laporan keuangan otomatis.', 'PHP • MySQL Database • UI/UX Figma • Bootstrap')" class="project-card bg-[#fffdf9] p-3.5 pb-6 rounded-sm shadow-xl rotate-1 hover:rotate-0 transition-all flex flex-col justify-between border border-stone-300 hover:scale-[1.03] cursor-pointer" data-category="ui web">
+                            <div>
+                                <div class="h-44 overflow-hidden relative bg-stone-900 border-2 border-stone-800 group">
+                                    <img src="dashboard laundry.avif" alt="Laundry" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                    <span class="absolute top-2 left-2 px-2 py-0.5 bg-pink-600 text-white mono-cam text-[10px] font-bold">UI/UX & System</span>
+                                    <span class="absolute bottom-2 right-2 px-2 py-0.5 bg-white/90 text-[#2c1e16] text-[10px] font-extrabold rounded shadow">🔍 Detail</span>
+                                </div>
+                                <div class="pt-4 space-y-1.5">
+                                    <h3 class="serif-retro font-extrabold text-base text-[#2c1e16]">Dashboard Manajemen Laundry</h3>
+                                    <p class="text-xs text-[#4a3525]">Sistem pencatatan transaksi dan laporan keuangan laundry.</p>
+                                </div>
+                            </div>
+                            <p class="handwriting text-right text-[#6b8e6b] text-base font-bold mt-2">#02 System • Klik Detail</p>
+                        </div>
+
+                        <!-- Proyek 3 -->
+                        <div onclick="openProjectModal('Corporate Web', 'Company Profile Access Media', 'company profile accessmedia.jfif', 'Website profil perusahaan responsif dengan slider katalog otomatis, galeri layanan, serta integrasi peta lokasi langsung ke Google Maps untuk memudahkan klien.', 'HTML5 • CSS3 • JavaScript • Google Maps API')" class="project-card bg-[#fffdf9] p-3.5 pb-6 rounded-sm shadow-xl -rotate-1 hover:rotate-0 transition-all flex flex-col justify-between border border-stone-300 hover:scale-[1.03] cursor-pointer" data-category="web">
+                            <div>
+                                <div class="h-44 overflow-hidden relative bg-stone-900 border-2 border-stone-800 group">
+                                    <img src="company profile accessmedia.jfif" alt="Company" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                    <span class="absolute top-2 left-2 px-2 py-0.5 bg-[#6b8e6b] text-white mono-cam text-[10px] font-bold">Corporate Web</span>
+                                    <span class="absolute bottom-2 right-2 px-2 py-0.5 bg-white/90 text-[#2c1e16] text-[10px] font-extrabold rounded shadow">🔍 Detail</span>
+                                </div>
+                                <div class="pt-4 space-y-1.5">
+                                    <h3 class="serif-retro font-extrabold text-base text-[#2c1e16]">Company Profile Access Media</h3>
+                                    <p class="text-xs text-[#4a3525]">Website perusahaan responsif dengan integrasi peta.</p>
+                                </div>
+                            </div>
+                            <p class="handwriting text-right text-amber-700 text-base font-bold mt-2">#03 Web • Klik Detail</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SLIDE 7 ================= -->
+        <section id="kontak" class="scroll-mt-24 w-full py-12 px-4 sm:px-12 bg-polka-biscuit shadow-inner relative">
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-[#ffffff] rounded-2xl p-6 sm:p-10 border-4 border-[#2c1e16] shadow-2xl relative text-stone-900">
+                    
+                    <div class="hidden sm:flex flex-col items-center justify-center w-20 h-24 bg-pink-100 border-4 border-dotted border-[#4a3525] absolute top-6 right-8 rotate-3 shadow">
+                        <span class="text-2xl">💌</span>
+                        <span class="mono-cam text-[9px] font-bold text-[#2c1e16] mt-1">POSTAGE</span>
+                        <span class="mono-cam text-[9px] font-bold text-pink-600">2026 ID</span>
+                    </div>
+
+                    <div class="mb-6">
+                        <span class="mono-cam text-xs font-bold text-emerald-700 uppercase tracking-widest">POST CARD • MARI TERHUBUNG</span>
+                        <h2 class="serif-retro text-2xl sm:text-3xl font-extrabold text-[#2c1e16] mt-1">Kontak & Kirim Pesan</h2>
+                    </div>
+
+                    <div class="bg-[#f8f5f0] p-5 sm:p-6 rounded-xl border-2 border-[#2c1e16] space-y-4 mb-6 shadow-md">
+                        <p class="text-xs font-extrabold text-[#2c1e16] uppercase tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-paper-plane text-emerald-600 text-sm"></i> Kirim Pesan Langsung via WhatsApp (Format Jelas untuk HRD)
+                        </p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-[11px] font-bold text-stone-700 mb-1">Nama / Perusahaan:</label>
+                                <input type="text" id="senderName" placeholder="Contoh: HRD PT Mabito Karya" class="w-full px-4 py-2.5 rounded-lg bg-white border-2 border-stone-400 text-xs text-stone-900 font-semibold focus:outline-none focus:border-emerald-600">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-stone-700 mb-1">Keperluan:</label>
+                                <input type="text" id="senderSubject" placeholder="Contoh: Undangan Interview / PKL" class="w-full px-4 py-2.5 rounded-lg bg-white border-2 border-stone-400 text-xs text-stone-900 font-semibold focus:outline-none focus:border-emerald-600">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-[11px] font-bold text-stone-700 mb-1">Isi Pesan:</label>
+                            <textarea id="senderMessage" rows="3" placeholder="Tuliskan detail tawaran atau pesan di sini..." class="w-full px-4 py-2.5 rounded-lg bg-white border-2 border-stone-400 text-xs text-stone-900 font-semibold focus:outline-none focus:border-emerald-600 resize-none"></textarea>
+                        </div>
+
+                        <button onclick="sendWhatsAppMessage()" class="w-full py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-extrabold text-xs transition-all flex items-center justify-center gap-2 shadow-lg border-2 border-[#2c1e16] hover:scale-[1.01] cursor-pointer">
+                            <i class="fa-brands fa-whatsapp text-base"></i> Kirim Pesan ke WhatsApp Alya
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <a href="mailto:alyaseptianiramadhan@gmail.com" class="p-3.5 rounded-xl bg-[#f8f5f0] border-2 border-[#2c1e16] hover:bg-amber-100 flex items-center gap-3 transition-all shadow-sm">
+                            <div class="w-9 h-9 rounded-full bg-amber-300 text-[#2c1e16] flex items-center justify-center text-xs"><i class="fa-solid fa-envelope"></i></div>
+                            <div>
+                                <p class="mono-cam text-[10px] font-bold text-stone-600 uppercase">Email</p>
+                                <p class="text-xs font-extrabold text-[#2c1e16] break-all">alyaseptianiramadhan@gmail.com</p>
+                            </div>
+                        </a>
+
+                        <a href="https://wa.me/6285797212257?text=Halo%20Alya,%20saya%20tertarik%20dengan%20portofolio%20Anda!" target="_blank" class="p-3.5 rounded-xl bg-[#f8f5f0] border-2 border-[#2c1e16] hover:bg-emerald-100 flex items-center gap-3 transition-all shadow-sm">
+                            <div class="w-9 h-9 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs"><i class="fa-brands fa-whatsapp"></i></div>
+                            <div>
+                                <p class="mono-cam text-[10px] font-bold text-stone-600 uppercase">WhatsApp</p>
+                                <p class="text-xs font-extrabold text-[#2c1e16]">Chat Cepat</p>
+                            </div>
+                        </a>
+
+                        <a href="https://www.instagram.com/xizi.alyaaa" target="_blank" class="p-3.5 rounded-xl bg-[#f8f5f0] border-2 border-[#2c1e16] hover:bg-pink-100 flex items-center gap-3 transition-all shadow-sm">
+                            <div class="w-9 h-9 rounded-full bg-pink-400 text-white flex items-center justify-center text-xs"><i class="fa-brands fa-instagram"></i></div>
+                            <div>
+                                <p class="mono-cam text-[10px] font-bold text-stone-600 uppercase">Instagram</p>
+                                <p class="text-xs font-extrabold text-[#2c1e16]">@xizi.alyaaa</p>
+                            </div>
+                        </a>
+
+                        <a href="https://www.tiktok.com/@xixi_29" target="_blank" class="p-3.5 rounded-xl bg-[#f8f5f0] border-2 border-[#2c1e16] hover:bg-stone-200 flex items-center gap-3 transition-all shadow-sm">
+                            <div class="w-9 h-9 rounded-full bg-[#2c1e16] text-white flex items-center justify-center text-xs"><i class="fa-brands fa-tiktok"></i></div>
+                            <div>
+                                <p class="mono-cam text-[10px] font-bold text-stone-600 uppercase">TikTok</p>
+                                <p class="text-xs font-extrabold text-[#2c1e16]">@xixi_29</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TOMBOL KEMBALI KE ATAS -->
+        <a href="#tentang" class="fixed bottom-6 right-6 z-50 bg-pink-400 hover:bg-pink-500 text-white px-4 py-2.5 rounded-full shadow-lg border-2 border-[#2c1e16] font-extrabold text-xs flex items-center gap-1.5 transition-all hover:scale-110">
+            <i class="fa-solid fa-arrow-up"></i> Top 🎀
+        </a>
+
+        <!-- FOOTER -->
+        <footer class="text-center py-6 bg-[#f5ebe0] text-xs text-[#2c1e16] font-bold border-t-2 border-[#d7ccc8]">
+            <p>© 2026 Alya Septiani Ramadhan • Edisi Portofolio Digital Scrapbook 🎀</p>
+        </footer>
+
+    </main>
+
     <script>
-        // FORM WHATSAPP HANDLER
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('senderName').value;
-            const email = document.getElementById('senderEmail').value;
-            const message = document.getElementById('senderMessage').value;
+        // SUARA SHUTTER KAMERA OTOMATIS
+        function playCameraShutterSound() {
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const bufferSize = audioCtx.sampleRate * 0.12;
+                const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+                const data = buffer.getChannelData(0);
 
-            const phone = "6280000000000"; // Ganti dengan nomor WhatsApp kamu
-            const text = `Halo Alya, saya *${name}* (Email: ${email}).%0A%0A*Pesan:*%0A${message}`;
-            
-            window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
-        });
+                for (let i = 0; i < bufferSize; i++) {
+                    data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (audioCtx.sampleRate * 0.02));
+                }
 
-        // TOGGLE MUSIK
-        const pressStartBtn = document.getElementById('pressStartBtn');
-        const startBtnText = document.getElementById('startBtnText');
-        const bgMusic = document.getElementById('bgMusic');
-        let isMusicPlaying = false;
+                const noise = audioCtx.createBufferSource();
+                noise.buffer = buffer;
 
-        pressStartBtn.addEventListener('click', () => {
-            if (!isMusicPlaying) {
-                bgMusic.play().then(() => {
-                    isMusicPlaying = true;
-                    startBtnText.textContent = "MUSIC: PLAYING 🎵";
-                    pressStartBtn.classList.add("animate-pulse");
-                }).catch(err => {
-                    console.log("Audio diblokir browser:", err);
-                });
-            } else {
-                bgMusic.pause();
-                isMusicPlaying = false;
-                startBtnText.textContent = "PRESS START TO PLAY ▶";
-                pressStartBtn.classList.remove("animate-pulse");
+                const filter = audioCtx.createBiquadFilter();
+                filter.type = 'bandpass';
+                filter.frequency.value = 1800;
+
+                noise.connect(filter);
+                filter.connect(audioCtx.destination);
+                noise.start();
+            } catch (e) {}
+        }
+
+        function triggerCameraShutter() {
+            playCameraShutterSound();
+            const flash = document.createElement('div');
+            flash.className = 'camera-flash';
+            document.body.appendChild(flash);
+            setTimeout(() => flash.remove(), 350);
+        }
+
+        // BUKA & TUTUP POPUP DETAIL PROYEK
+        function openProjectModal(tag, title, imgSrc, desc, tech) {
+            playCameraShutterSound();
+            document.getElementById('modalTag').textContent = tag;
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalImg').src = imgSrc;
+            document.getElementById('modalDesc').textContent = desc;
+            document.getElementById('modalTech').textContent = tech;
+            document.getElementById('projectModal').classList.remove('hidden');
+        }
+
+        function closeProjectModal() {
+            document.getElementById('projectModal').classList.add('hidden');
+        }
+
+        // EFEK KURSOR BINTANG
+        const sparkles = ['✨', '⭐', '🎀', '💖'];
+        document.addEventListener('mousemove', function(e) {
+            if (Math.random() < 0.3) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'cursor-sparkle';
+                sparkle.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+                sparkle.style.left = e.pageX + 'px';
+                sparkle.style.top = e.pageY + 'px';
+                
+                const dx = (Math.random() - 0.5) * 50;
+                const dy = (Math.random() - 0.5) * 50 - 20;
+                sparkle.style.setProperty('--dx', dx + 'px');
+                sparkle.style.setProperty('--dy', dy + 'px');
+                
+                document.body.appendChild(sparkle);
+                setTimeout(() => sparkle.remove(), 800);
             }
         });
 
-        // TOGGLE MENU MOBILE
-        const menuBtn = document.getElementById('menuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
+        function filterProjects(category) {
+            const cards = document.querySelectorAll('.project-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active-filter'));
+            document.getElementById(`filter-${category}`).classList.add('active-filter');
 
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-
-        // THEME SWITCHER
-        const body = document.body;
-        const themeToggle = document.getElementById('themeToggle');
-        const themeToggleMobile = document.getElementById('themeToggleMobile');
-        const themeIcon = document.getElementById('themeIcon');
-        const themeIconMobile = document.getElementById('themeIconMobile');
-
-        function switchTheme() {
-            if (body.classList.contains('dark-mode')) {
-                body.classList.replace('dark-mode', 'light-mode');
-                themeIcon.className = 'fa-solid fa-sun text-lg';
-                themeIconMobile.className = 'fa-solid fa-sun text-base';
-                localStorage.setItem('theme', 'light');
-            } else {
-                body.classList.replace('light-mode', 'dark-mode');
-                themeIcon.className = 'fa-solid fa-moon text-lg';
-                themeIconMobile.className = 'fa-solid fa-moon text-base';
-                localStorage.setItem('theme', 'dark');
-            }
-        }
-
-        themeToggle.addEventListener('click', switchTheme);
-        themeToggleMobile.addEventListener('click', switchTheme);
-
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'light') {
-            body.classList.replace('dark-mode', 'light-mode');
-            themeIcon.className = 'fa-solid fa-sun text-lg';
-            themeIconMobile.className = 'fa-solid fa-sun text-base';
-        }
-
-        // GENERATOR LABA-LABA BERJATUHAN
-        const spiderContainer = document.getElementById('spiderRainContainer');
-        const totalSpiders = 9;
-
-        for (let i = 0; i < totalSpiders; i++) {
-            createFallingSpider();
-        }
-
-        function createFallingSpider() {
-            const spider = document.createElement('i');
-            spider.className = 'fa-solid fa-spider falling-spider';
-            
-            const leftPos = Math.random() * 90 + 5;
-            spider.style.left = leftPos + '%';
-
-            const fontSize = Math.random() * 20 + 18;
-            spider.style.fontSize = fontSize + 'px';
-
-            const duration = Math.random() * 5 + 4;
-            spider.style.animationDuration = duration + 's';
-
-            const delay = Math.random() * 5;
-            spider.style.animationDelay = delay + 's';
-
-            spider.addEventListener('click', () => {
-                spider.style.transition = 'transform 0.2s ease, opacity 0.2s ease';
-                spider.style.transform = 'scale(0)';
-                spider.style.opacity = '0';
-                setTimeout(() => {
-                    spider.remove();
-                    createFallingSpider();
-                }, 300);
-            });
-
-            spiderContainer.appendChild(spider);
-        }
-
-        // ANIMASI GERAK OTOMATIS SAAT SCROLL (STAGE REVEAL)
-        const observerOptions = { root: null, threshold: 0.15 };
-        const stageObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
+            cards.forEach(card => {
+                const cardCategories = card.getAttribute('data-category');
+                if (category === 'all' || cardCategories.includes(category)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
                 }
             });
-        }, observerOptions);
+        }
 
-        document.querySelectorAll('.stage-reveal').forEach(stage => {
-            stageObserver.observe(stage);
-        });
+        let pendingWhatsAppUrl = "";
+
+        function sendWhatsAppMessage() {
+            const name = document.getElementById('senderName').value;
+            const subject = document.getElementById('senderSubject').value;
+            const message = document.getElementById('senderMessage').value;
+
+            if(!name || !message) {
+                alert("Mohon isi Nama dan Pesan terlebih dahulu ya!");
+                return;
+            }
+
+            const text = `Halo Alya, perkenalkan saya *${name}*.\n\n*Keperluan:* ${subject || 'Diskusi Portofolio'}\n*Pesan:* ${message}`;
+            pendingWhatsAppUrl = `https://wa.me/6285797212257?text=${encodeURIComponent(text)}`;
+
+            document.getElementById('waModal').classList.remove('hidden');
+        }
+
+        function closeWaModal() {
+            document.getElementById('waModal').classList.add('hidden');
+            if (pendingWhatsAppUrl) {
+                window.open(pendingWhatsAppUrl, '_blank');
+            }
+        }
+
+        const music = document.getElementById('bgMusic');
+        const musicIcon = document.getElementById('musicIcon');
+        const musicText = document.getElementById('musicText');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (!isPlaying) {
+                music.play().then(() => {
+                    isPlaying = true;
+                    musicIcon.className = "fa-solid fa-compact-disc fa-spin";
+                    musicText.textContent = "Musik Menyala ✨";
+                }).catch(() => alert("Pastikan file musik sudah ada di dalam satu folder!"));
+            } else {
+                music.pause();
+                isPlaying = false;
+                musicIcon.className = "fa-solid fa-compact-disc";
+                musicText.textContent = "Putar Musik 🎶";
+            }
+        }
     </script>
 </body>
 </html>
